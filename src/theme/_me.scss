@@ -1,0 +1,54 @@
+.header-me{
+    ion-segment-button{
+        color: var(--cl-black);
+    }
+}
+
+.infos, .commandes, .abonnements{
+    display: none;
+}
+
+.infos.active, .commandes.active, .abonnements.active{
+    display: block;
+}
+
+.infos{
+    ion-card{
+        --background: transparent;
+        box-shadow: none;
+        display: none;
+
+        ion-card-title{
+            span{
+                font-size: 18px;
+                margin-right: 20px;
+            }
+        }
+    }
+
+    form{
+        display: none;
+
+       .flex{
+        margin-top: 20px;
+
+        .btn-envoyer{
+            margin: 0;
+            margin-right: 10px;
+        }
+
+        .btn-annuler{
+            --background: white;
+            --box-shadow: none;
+            --border-radius: none;
+            color: black;
+            margin: 0;
+        }
+       }
+    }
+
+    ion-card.active, form.active{
+        display: block;
+    }
+}
+

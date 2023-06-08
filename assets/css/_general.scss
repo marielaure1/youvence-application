@@ -1,0 +1,238 @@
+/**
+ * Generale
+ */
+:root{
+    font-family: $ft-secondary;
+    color: $cl-black;
+}
+
+body{
+    transition: all 0.5s ease;
+    background-color: #F4C09D;
+}
+
+body.bg-color{
+    background-color: #F4C09D;
+}
+
+header, section{
+    box-sizing: border-box;
+}
+
+p{
+    margin-bottom: 20px;
+    line-height: 1.4;
+}
+
+a{
+    text-decoration: none;
+}
+/**
+ * Title
+ */
+h1, h2, h3, h4, h5, h6{
+    font-family: $ft-primary;
+}
+
+h1{
+    font-size: 96px;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.title{
+    font-size: 68px;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-bottom: 50px;
+    color: $cl-white;
+}
+
+/**
+ * Bouton
+ */
+.btn{
+    padding: 15px 30px;
+    display: block;
+    transition: 1s;
+    text-decoration: none;
+}
+
+.btn.btn-brown{
+    background-color: $cl-brown1;
+    color: $cl-white;
+}
+
+.btn.btn-brown:hover{
+    background-color: $cl-brown2;
+    color: $cl-black;
+}
+
+.btn-line{
+    display: block;
+    transition: 1s;
+    text-decoration: none;
+    padding-bottom: 10px;
+    position: relative;
+    margin-bottom: 10px;
+    width: fit-content;
+}
+
+.btn-line:before{
+    content: "";
+    position: absolute;
+    bottom: 0;
+    width: 30px;
+    height: 2px;
+    transition: 0.5s;
+}
+
+.btn-line:hover:before{
+    width: 100%;
+}
+
+.btn-line.btn-white{
+    color: $cl-white;
+}
+
+.btn-line.btn-white:before{
+    background-color: $cl-white;
+}
+
+.btn-line.btn-black{
+    color: $cl-black;
+}
+
+.btn-line.btn-black:before{
+    background-color: $cl-black;
+}
+
+/**
+ * Block
+ */
+.container{
+    max-width: 1400px;
+    width: 100%;
+    height: 100%;
+    // margin-left: 50%;
+    // transform: translateX(-50%);
+}
+
+/**
+ * Form
+ */
+input, select, button{
+    outline: none;
+    border: none;
+}
+
+/**
+ * Circle
+ */
+.circle{
+    position: relative;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .middle{
+        height: 140px;
+        width: 140px;
+        border-radius: 50%;
+        border: 1px solid #1B1B1B;
+    }
+    
+    .text {
+        position: absolute;
+
+        span{
+            position: absolute;
+            left: 50%;
+            font-size: 1em;
+            transform-origin: 0 100px;
+        }
+    }
+    
+    .text-normal{
+        animation: rotateText 10s linear infinite;
+        width: 70%;
+        height: 70%;
+    }
+    
+    .text-reverse {
+        animation: rotateTextReverse 10s linear infinite;
+        width: 100%;
+        height: 100%;
+    }
+}
+
+/**
+ * Produits
+ */
+.products{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+
+    .product{
+
+        .img-product{
+            overflow: hidden;
+
+            img{
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+
+        .text-product{
+            padding-top: 20px;
+
+            h3{
+                font-size: 18px;
+                font-weight: 600;
+                margin-bottom: 10px;
+            }
+        }
+    }
+}
+
+/**
+ * header
+ */
+
+.header-page{
+    height: 100vh;
+
+    .two-background{
+        display: flex;
+        width: 100%;
+        height: 100%;
+
+        & > .img-column{
+            width: 50%;
+            height: 100%;
+            overflow: hidden;
+
+            img{
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                object-position: center;
+            }
+        }
+
+        & > .text-column{
+            width: 50%;
+            height: 100%;
+            padding: 20vh 50px;
+            color: $cl-white;
+
+        }
+    }
+}

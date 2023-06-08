@@ -1,0 +1,25 @@
+.plans{
+    background-color: var(--cl-green);
+    min-height: calc(100vh - 48px);
+    padding: 150px 10px;
+
+    .card-plans{
+        border: white 1px solid;
+        margin-bottom: 20px;
+        color: var(--cl-white);
+
+        & > div{
+            padding: 20px;
+        }
+
+        ion-button{
+            padding: 0;
+            margin: 0;
+            --box-shadow: 0;
+            --border-radius: 0;
+            width: 100%;
+            --background: white;
+            color: var(--cl-black);
+        }
+    }
+}

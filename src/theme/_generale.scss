@@ -1,0 +1,73 @@
+ion-tab{
+  padding: 10px 0;
+}
+
+ion-tab-button{
+  padding: 10px;
+}
+
+ion-label{
+  font-size: 20px;
+}
+
+.header-md::after{
+  display: none;
+}
+
+ion-segment-button{
+  --indicator-height: 0;
+}
+
+ion-segment-button.ion-activated{
+  --background-activated-opacity: 0;
+}
+
+ion-card, ion-grid, ion-row{
+  margin: 0;
+  padding: 0;
+}
+
+ion-content{
+  transition: all 0.5s ease;
+  --background: none;
+  background: var(--cl-beige2);
+}
+
+.title{
+  font-size: 36px;
+  color: var(--cl-white);
+  text-transform: uppercase;
+  font-family: var(--ft-primary);
+  font-weight: 600;
+}
+
+section{
+  padding: 50px 15px;
+}
+
+// Boutons
+.btn{
+  padding: 10px;
+  font-family: var(--ft-primary);
+}
+
+.btn-primary{
+  --ion-color-primary: var(--cl-white);
+  background: var(--cl-brown1);
+}
+
+.text-align-center{
+  text-align: center;
+}
+
+.header-static{
+  position: static!important;
+}
+
+.flex{
+  display: flex;
+}
+
+.align-items-center{
+  align-items: center;
+}

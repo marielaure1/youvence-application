@@ -1,0 +1,52 @@
+.gallerie{
+    padding: 0;
+
+    img{
+        width: 100%;
+        margin-top: 5px;
+    }
+}
+
+.details{
+    p{
+        color: var(--cl-brown1);
+        font-weight: 500;
+    }
+}
+
+
+ion-accordion{
+    --background: none;
+    background-color: transparent;
+
+    .ion-color-light{
+        --ion-color-base: transparent!important;
+        --ion-color-shade: var(--cl-brown1)!important;
+        --ion-color-contrast: var(--cl-brown1)!important;
+        --border-width: 0 0 2px 0;
+
+        ion-icon{
+            --ion-color-contrast: var(--cl-brown1)!important;
+        }
+    }
+
+    & > div {
+        color: var(--cl-brown1);
+    }
+}
+
+.banner-product{
+    padding: 0;
+
+    swiper-container{
+        --swiper-pagination-color: var(--cl-brown1)!important;
+    }
+
+    swiper-slide{
+        img{
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+        }
+    }
+}

@@ -1,0 +1,55 @@
+
+.input-fill-solid.has-focus.sc-ion-input-md-h,
+.input-fill-solid.sc-ion-input-md-h,
+.textarea-fill-solid.has-focus.sc-ion-textarea-md-h,
+.textarea-fill-solid.sc-ion-textarea-md-h {
+    --background: transparent;
+    --border-color: transparent;
+}
+
+.input-label-placement-floating.has-focus.sc-ion-input-md-h .label-text-wrapper.sc-ion-input-md, 
+.input-label-placement-floating.sc-ion-input-md-h .label-text-wrapper.sc-ion-input-md,
+.textarea-label-placement-floating.has-focus.sc-ion-textarea-md-h .label-text-wrapper.sc-ion-textarea-md,
+.textarea-label-placement-floating.sc-ion-textarea-md-h .label-text-wrapper.sc-ion-textarea-md{
+    color: var(--cl-brown1);
+    font-weight: 20px;
+    font-family: var(--ft-primary);
+}
+
+.input-bottom.sc-ion-input-md .helper-text.sc-ion-input-md,
+.textarea-bottom.sc-ion-textarea-md .helper-text.sc-ion-textarea-md{
+    color: var(--cl-brown1);
+}
+
+.input-highlight.sc-ion-input-md,
+.textarea-highlight.sc-ion-textarea-md{
+    background: var(--cl-brown1);
+}
+
+.sc-ion-input-md-h .input-highlight.sc-ion-input-md,
+.sc-ion-textarea-md-h .textarea-highlight.sc-ion-textarea-md{
+    transform: scale(1);
+}
+
+.contact{
+    padding: 30px 15px;
+
+    ion-input{
+        margin-bottom: 20px;
+    }
+}
+
+.btn-envoyer{
+    --background: none;
+    --color: none;
+    background-color: var(--cl-brown1);
+    color: var(--cl-white);
+    margin-top: 20px;
+}
+
+.header-contact {
+    ion-segment-button{
+        color: var(--cl-black);
+    }
+}
+
