@@ -39,9 +39,7 @@ setupIonicReact();
 
 const App = () => (
   <IonApp>
-    <IonReactRouter>
       <Tabs/>
-    </IonReactRouter>
   </IonApp>
 );
 

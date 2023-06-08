@@ -13,6 +13,8 @@ import {
 import { IonReactRouter } from '@ionic/react-router';
 import { ellipse, square, triangle } from 'ionicons/icons';
 import { logoSimple, search, pack, user } from '@/assets/index.js';
+import Connexion from '@/src/pages/Connexion.jsx';
+import Inscription from '@/src/pages/Inscription.jsx';
 import Home from '@/src/pages/Home.jsx';
 import Contact from '@/src/pages/Contact.jsx';
 import Collections from '@/src/pages/Collections.jsx';
@@ -33,6 +35,8 @@ const Tabs = () => {
               
                 <IonRouterOutlet>
                     <Route path="/" component={Home} />
+                    <Route path="/connexion" component={Connexion} />
+                    <Route path="/inscription" component={Inscription} />
                     <Route path="/contact" component={Contact} />
                     <Route path="/collections" component={Collections} />
                     <Route path="/collections/:slug" component={Collection} />

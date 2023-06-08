@@ -1,135 +1,51 @@
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonItem, IonLabel, IonSegment, IonSegmentButton, IonIcon, IonButton, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle } from '@ionic/react';
 import { Icon } from '@iconify/react';
-import { bannerHome, logo, collectionBanner } from "@/assets"
+import { bannerHome, logo, collectionBanner, connexionVideo } from "@/assets"
 import BackgroundAnimation from '@/src/animations/BackgroundAnimation';
 import React, {useEffect, useState} from 'react';
 import { IonInput, IonTextarea  } from '@ionic/react';
 
-const Contact = () => {
-    const [isTouched, setIsTouched] = useState(false);
-    const [isValid, setIsValid] = useState();
-  
-    const validateEmail = (email) => {
-      return email.match(
-        /^(?=.{1,254}$)(?=.{1,64}@)[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+)*@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/
-      );
-    };
-  
-    const validate = (ev) => {
-      const value = (ev.target).value;
-  
-      setIsValid(undefined);
-  
-      if (value === '') return;
-  
-      validateEmail(value) !== null ? setIsValid(true) : setIsValid(false);
-    };
-  
-    const markTouched = () => {
-      setIsTouched(true);
-    };
+const Connexion = () => {
+    
   
     return (
-        <IonContent>
-            <IonHeader className='header-home header-contact header-static'>
-               <ion-grid>
-                    <ion-row>
-                        <ion-col></ion-col>
-                        <ion-col class="logo">
-                            <img src={logo} alt="Youvence" />
-                        </ion-col>
-                        <ion-col class="icones">
-                            {/* <Icon icon="ph:heart-light" />
-                            <Icon icon="ph:shopping-cart-simple-light" /> */}
-                        </ion-col>
-                    </ion-row>
-                </ion-grid>
+        <IonContent class="connexion">
+         
+            <video autoPlay loop muted src={connexionVideo}></video>
 
-                <IonSegment scrollable={true} value="heart">
-                    <ion-router-link href="/">
-                        <IonSegmentButton value="youcare">
-                            Accueil
-                        </IonSegmentButton>
-                    </ion-router-link>
 
-                    <ion-router-link href="/collections">
-                        <IonSegmentButton value="youluxe">
-                            Collections
-                        </IonSegmentButton>
-                    </ion-router-link>
-
-                    <ion-router-link href="/posts">
-                        <IonSegmentButton value="youdiscovery">
-                            Articles
-                        </IonSegmentButton>
-                    </ion-router-link>
-
-                    <ion-router-link href="/plans">
-                        <IonSegmentButton value="youvence">
-                            Abonnements
-                        </IonSegmentButton>
-                    </ion-router-link>
-                    <ion-router-link href="/contact">
-                        <IonSegmentButton value="youvence">
-                            Contact
-                        </IonSegmentButton>
-                    </ion-router-link>
-                </IonSegment>
-            </IonHeader>
-        
-            <BackgroundAnimation />
-
-            <section className="contact">
-                <form action="">
+            <IonCard class="form">
+                <form action="/">
+                    <h1>Connectez-vous</h1>
                     <IonInput
-                        className={`${isValid && 'ion-valid'} ${isValid === false && 'ion-invalid'} ${isTouched && 'ion-touched'}`}
-                        type="text"
-                        fill="solid"
-                        label="Nom*"
-                        labelPlacement="floating"
-                        helperText="Entrez votre nom">
-                    </IonInput>
-                    <IonInput
-                        className={`${isValid && 'ion-valid'} ${isValid === false && 'ion-invalid'} ${isTouched && 'ion-touched'}`}
-                        type="text"
-                        fill="solid"
-                        label="Prénom*"
-                        labelPlacement="floating"
-                        helperText="Entrez votre prénom">
-                    </IonInput>
-                    <IonInput
-                        className={`${isValid && 'ion-valid'} ${isValid === false && 'ion-invalid'} ${isTouched && 'ion-touched'}`}
-                        type="text"
-                        fill="solid"
-                        label="Téléphone"
-                        labelPlacement="floating"
-                        helperText="Entrez votre numéro de téléphone">
-                    </IonInput>
-                    <IonInput
-                        className={`${isValid && 'ion-valid'} ${isValid === false && 'ion-invalid'} ${isTouched && 'ion-touched'}`}
+                        className=""
                         type="email"
                         fill="solid"
                         label="Email"
                         labelPlacement="floating"
-                        helperText="Entrez un email valide"
-                        errorText="Email non valide"
-                        onIonInput={(event) => validate(event)}
-                        onIonBlur={() => markTouched()}>
+                        helperText="Entrez votre email">
                     </IonInput>
-                    <IonTextarea
+                    <IonInput
+                        className=""
+                        type="password"
                         fill="solid"
-                        label="Email"
+                        label="Mot de passe"
                         labelPlacement="floating"
-                        helperText="Entrez un message">
-                    </IonTextarea>
+                        helperText="Entrez votre mot de passe"
+                        errorText="Email non valide">
+                    </IonInput>
+
+                    <ion-router-link class="mdp-oublie">Mot de passe oublié ?</ion-router-link>
 
                     <IonButton class="btn-envoyer">
-                        Envoyer
+                        Se connecter
                     </IonButton>
+
+                    <ion-router-link class="link-form" href="/inscription">Vous n'avez pas de compte ? Inscrivez-vous !</ion-router-link>
                 </form>
-            </section>
+            </IonCard>
         </IonContent>
     );
 };
 
-export default Contact;
+export default Connexion;

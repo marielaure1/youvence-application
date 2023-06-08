@@ -1,4 +1,6 @@
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonItem, IonLabel, IonSegment, IonSegmentButton, IonIcon, IonButton, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonInput, IonTextarea } from '@ionic/react';
+import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonItem, IonLabel, IonSegment, IonSegmentButton, IonIcon, IonButton, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonInput, IonTextarea, IonInfiniteScroll,
+    IonInfiniteScrollContent,
+    IonList, IonThumbnail } from '@ionic/react';
 import { Icon } from '@iconify/react';
 import { bannerHome, logo, collectionBanner } from "@/assets"
 import BackgroundAnimation from '@/src/animations/BackgroundAnimation';
@@ -47,6 +49,21 @@ const Me = () => {
             setDisplayInfos("show")
         }
     }
+
+    const [items, setItems] = useState([]);
+
+    const generateItems = () => {
+      const newItems = [];
+      for (let i = 0; i < 50; i++) {
+        newItems.push(`Item ${1 + items.length + i}`);
+      }
+      setItems([...items, ...newItems]);
+    };
+  
+    useEffect(() => {
+      generateItems();
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     // style={{ '--background': backgroundColor }}
     // class={segementStatus == "produits" ? "active" : ""}  
@@ -159,7 +176,37 @@ const Me = () => {
             </section>
 
             <section className={`commandes ${segementStatus == "commandes" ? "active" : ""}`}>
-                <p>Commandes</p>
+
+            <IonList>
+                {items.map((item, index) => (
+                <IonCard key={item}>
+                        <IonCardHeader>
+                            <IonCardTitle>03/05/2023</IonCardTitle>
+                            <IonCardSubtitle>Nom du produit</IonCardSubtitle>
+                        </IonCardHeader>
+
+                        <IonCardContent>
+                            <IonItem>
+                                <IonThumbnail slot="start">
+                                    <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />
+                                </IonThumbnail>
+                                <IonLabel>Produits</IonLabel>
+                                <p>12 rue adresse de livraison</p>
+                            </IonItem>
+                          
+                        </IonCardContent>
+                    </IonCard>
+                ))}
+            </IonList>
+            <IonInfiniteScroll
+                onIonInfinite={(ev) => {
+                generateItems();
+                setTimeout(() => ev.target.complete(), 500);
+                }}
+            >
+                <IonInfiniteScrollContent></IonInfiniteScrollContent>
+            </IonInfiniteScroll>
+            
             </section>
 
             <section className={`abonnements ${segementStatus == "abonnements" ? "active" : ""}`}>

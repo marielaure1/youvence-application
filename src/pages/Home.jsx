@@ -1,7 +1,8 @@
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonItem, IonLabel, IonSegment, IonSegmentButton, IonIcon, IonButton, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle } from '@ionic/react';
+import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonItem, IonLabel, IonSegment, IonSegmentButton, IonIcon, IonButton, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonRouterLink, IonImg } from '@ionic/react';
 import { Icon } from '@iconify/react';
-import { bannerHome, logo, collectionBanner } from "@/assets"
+import { bannerHome, logo, collectionBanner, AProposCover } from "@/assets"
 import BackgroundAnimation from '@/src/animations/BackgroundAnimation';
+import Header from '@/src/components/layout/Header';
 import React, {useEffect, useState} from 'react';
 import { Redirect, Route } from 'react-router-dom';
 
@@ -36,51 +37,7 @@ const Home = () => {
     
     return (
         <IonContent scrollEvents={true} onIonScroll={handleScroll} style={{ 'background': backgroundColor }}>
-            <IonHeader className='header-home'>
-               <ion-grid>
-                    <ion-row>
-                        <ion-col></ion-col>
-                        <ion-col class="logo">
-                            <img src={logo} alt="Youvence" />
-                        </ion-col>
-                        <ion-col class="icones">
-                            {/* <Icon icon="ph:heart-light" />
-                            <Icon icon="ph:shopping-cart-simple-light" /> */}
-                        </ion-col>
-                    </ion-row>
-                </ion-grid>
-
-                <IonSegment scrollable={true} value="heart">
-                    <ion-router-link href="/">
-                        <IonSegmentButton value="youcare">
-                            Accueil
-                        </IonSegmentButton>
-                    </ion-router-link>
-
-                    <ion-router-link href="/collections">
-                        <IonSegmentButton value="youluxe">
-                            Collections
-                        </IonSegmentButton>
-                    </ion-router-link>
-
-                    <ion-router-link href="/posts">
-                        <IonSegmentButton value="youdiscovery">
-                            Articles
-                        </IonSegmentButton>
-                    </ion-router-link>
-
-                    <ion-router-link href="/plans">
-                        <IonSegmentButton value="youvence">
-                            Abonnements
-                        </IonSegmentButton>
-                    </ion-router-link>
-                    <ion-router-link href="/contact">
-                        <IonSegmentButton value="youvence">
-                            Contact
-                        </IonSegmentButton>
-                    </ion-router-link>
-                </IonSegment>
-            </IonHeader>
+            <Header/>
         
             <BackgroundAnimation />
 
@@ -88,12 +45,25 @@ const Home = () => {
                 <img src={bannerHome} alt="Youvence" />
                 <h1>Youvence</h1>
             </section>
+            
+            <section className="a-propos background" data-color="#F2AAAE">
+                <h2 className="title animation animation-bounce-letter" data-on-view="true" data-duration="10" >A propos</h2>
+                
+                <img src={AProposCover} alt="Youvence" />
+
+                <p>Youvence est une entreprise spécialisée dans la vente de box de soins naturels pour la peau et les cheveux à des prix réduits. Notre entreprise offre une sélection soigneusement choisie de marques renommées, proposant des produits de qualité supérieure pour votre routine de beauté</p>
+                <p>En plus de nos prix attractifs, nous avons également mis en place un système d'abonnement qui permet à nos clients de bénéficier de tarifs encore plus avantageux. Chaque box est soigneusement conçue pour offrir une expérience complète de soins, comprenant des produits adaptés à différents types de peau et de cheveux.</p>
+                <p>Chez Youvence, nous nous engageons à promouvoir la beauté naturelle tout en offrant des solutions abordables et pratiques pour prendre soin de vous.</p>
+                <IonRouterLink  class="btn btn-primary" href="/plans">
+                    Découvrir nos abonnements
+                </IonRouterLink >
+            </section>
 
             <section className="nouveautes background" data-color="#915946">
                 <h2 className="title animation animation-bounce-letter" data-on-view="true" data-duration="10" >Nouveautés</h2>
 
                 <IonCard class='card-collection'>
-                    <ion-router-link href="/collections/loreal">
+                    <IonRouterLink  routerLink="/collections/loreal">
                         <img src={collectionBanner} alt="Youvence" />
 
                         <ion-grid>
@@ -107,7 +77,7 @@ const Home = () => {
                                 </ion-col>
                             </ion-row>
                         </ion-grid>
-                    </ion-router-link>
+                    </IonRouterLink >
 
                 </IonCard>
                 <IonCard class='card-collection'>
@@ -168,9 +138,9 @@ const Home = () => {
 
                 <p>Lorem ipsum dolor sit amet consectetur. Magna lacus vivamus accumsan quisque egestas commodo consequat elementum. Sapien turpis sagittis tristique nunc pellentesque. </p>
 
-                <ion-router-link class="btn btn-primary" href="/posts/loreal">
+                <IonRouterLink  class="btn btn-primary" href="/posts/loreal">
                     Découvrir l'article
-                </ion-router-link>
+                </IonRouterLink >
             </section>
 
             <section className="derniers-jours background" data-color="#566D46">
@@ -249,9 +219,9 @@ const Home = () => {
 
                 <p>Lorem ipsum dolor sit amet consectetur. Magna lacus vivamus accumsan quisque egestas commodo consequat elementum. Sapien turpis sagittis tristique nunc pellentesque. </p>
 
-                <ion-router-link class="btn btn-primary" href="/posts/loreal">
+                <IonRouterLink  class="btn btn-primary" href="/posts/loreal">
                     Découvrir l'article
-                </ion-router-link>
+                </IonRouterLink >
             </section>
                
             <section className="prochainement background" data-color="#D0E9E9">

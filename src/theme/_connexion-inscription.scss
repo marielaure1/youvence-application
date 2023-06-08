@@ -1,0 +1,71 @@
+.connexion, .inscription{
+    position: relative;
+
+    video {
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -20;
+        object-fit: cover;
+    }
+
+    .form{
+        background-color: rgba(9, 9, 9, 0.603);
+        box-shadow: none;
+        height: 100%;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: inherit;
+        padding-top: 30px;
+        
+
+        form {
+            width: 90%;
+            min-width: 300px;
+
+            h1{
+                color: var(--cl-white);
+                font-family: var(--ft-primary);
+            }
+
+            .input-label-placement-floating.has-focus.sc-ion-input-md-h .label-text-wrapper.sc-ion-input-md, 
+            .input-label-placement-floating.sc-ion-input-md-h .label-text-wrapper.sc-ion-input-md,
+            .textarea-label-placement-floating.has-focus.sc-ion-textarea-md-h .label-text-wrapper.sc-ion-textarea-md,
+            .textarea-label-placement-floating.sc-ion-textarea-md-h .label-text-wrapper.sc-ion-textarea-md{
+                color: var(--cl-white);
+            }
+
+            .input-bottom.sc-ion-input-md .helper-text.sc-ion-input-md,
+            .textarea-bottom.sc-ion-textarea-md .helper-text.sc-ion-textarea-md{
+                color: var(--cl-white);
+            }
+
+            .input-highlight.sc-ion-input-md,
+            .textarea-highlight.sc-ion-textarea-md{
+                background: var(--cl-white);
+            }
+
+            .mdp-oublie, .link-form{
+                margin-top: 20px;
+                text-align: center;
+                width: 100%;
+                display: inherit;
+                font-size: 12px;
+                color: var(--cl-pink1);
+            }
+
+            ion-button{
+                margin-left: 50%;
+                transform: translateX(-50%);
+            }
+
+            .link-form{
+                margin-top: 40px;
+            }
+        }
+    }
+}

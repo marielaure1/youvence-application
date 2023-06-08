@@ -3,6 +3,7 @@ import { Icon } from '@iconify/react';
 import { bannerHome, logo, collectionBanner } from "@/assets"
 import BackgroundAnimation from '@/src/animations/BackgroundAnimation';
 import React, {useEffect, useState} from 'react';
+import Header from '@/src/components/layout/Header';
 
 const Plans = () => {
     const [backgroundColor, setBackgroundColor] = useState("")
@@ -29,51 +30,7 @@ const Plans = () => {
     
     return (
         <IonContent scrollEvents={true} onIonScroll={handleScroll} style={{ 'background': backgroundColor }}>
-            <IonHeader className='header-home'>
-               <ion-grid>
-                    <ion-row>
-                        <ion-col></ion-col>
-                        <ion-col class="logo">
-                            <img src={logo} alt="Youvence" />
-                        </ion-col>
-                        <ion-col class="icones">
-                            {/* <Icon icon="ph:heart-light" />
-                            <Icon icon="ph:shopping-cart-simple-light" /> */}
-                        </ion-col>
-                    </ion-row>
-                </ion-grid>
-
-                <IonSegment scrollable={true} value="heart">
-                    <ion-router-link href="/">
-                        <IonSegmentButton value="youcare">
-                            Accueil
-                        </IonSegmentButton>
-                    </ion-router-link>
-
-                    <ion-router-link href="/collections">
-                        <IonSegmentButton value="youluxe">
-                            Collections
-                        </IonSegmentButton>
-                    </ion-router-link>
-
-                    <ion-router-link href="/posts">
-                        <IonSegmentButton value="youdiscovery">
-                            Articles
-                        </IonSegmentButton>
-                    </ion-router-link>
-
-                    <ion-router-link href="/plans">
-                        <IonSegmentButton value="youvence">
-                            Abonnements
-                        </IonSegmentButton>
-                    </ion-router-link>
-                    <ion-router-link href="/contact">
-                        <IonSegmentButton value="youvence">
-                            Contact
-                        </IonSegmentButton>
-                    </ion-router-link>
-                </IonSegment>
-            </IonHeader>
+            <Header/>
         
             <BackgroundAnimation />
 

@@ -4,6 +4,10 @@
     left: 0;
     --ion-background-color: transparent;
 
+    img{
+        width: 70px;
+    }
+
     ion-col.logo{
         display: flex;
         justify-content: center;
@@ -24,7 +28,7 @@
 
     ion-segment{
         --background: transparent;
-        margin-top: 20px;
+        // margin-top: 20px;
        
         ion-segment-button{
             padding: 0px;

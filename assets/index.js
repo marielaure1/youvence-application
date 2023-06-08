@@ -1,5 +1,6 @@
 // Logos
-import logo from "./logos/logo.png" 
+import logo from "./logos/logo-white.png" 
+import logoBlack from "./logos/logo-black.png" 
 import logoSimple from "./logos/logo-simple.svg" 
 
 // Icones
@@ -12,5 +13,10 @@ import addCart from "./icons/add-cart.svg"
 import bannerHome from "./images/banner.jpg" 
 import collectionBanner from "./images/collection.jpg" 
 import articleBanner from "./images/article.jpg" 
+import AProposCover from "./images/a-propos.jpg" 
 
-export { logo, logoSimple, pack, search, user, bannerHome, collectionBanner, addCart, articleBanner }
+// Videos
+import connexionVideo from  "./videos/connexion.mp4"
+import inscriptionVideo from  "./videos/inscription.mp4"
+
+export { logo, logoSimple, pack, search, user, bannerHome, collectionBanner, addCart, articleBanner, connexionVideo, inscriptionVideo, AProposCover, logoBlack }
