@@ -28,9 +28,9 @@ import Me from '@/src/pages/Me.jsx';
 
 const Tabs = () => {
     return (
-        <IonPage>
-        
-            <IonTabs>
+     <IonReactRouter>
+            <IonTabs>   
+              
                 <IonRouterOutlet>
                     <Route path="/" component={Home} />
                     <Route path="/contact" component={Contact} />
@@ -46,6 +46,7 @@ const Tabs = () => {
                     <Route path="/404" component={Error} />
                     <Redirect to="/404" />
                 </IonRouterOutlet>
+           
                 <IonTabBar slot="bottom">
                     <IonTabButton tab="home" href="/">
                         <IonIcon aria-hidden="true" icon={logoSimple} />
@@ -65,8 +66,7 @@ const Tabs = () => {
                     </IonTabButton>
                 </IonTabBar>
             </IonTabs>
-                
-        </IonPage>
+             </IonReactRouter>        
     )
 }
 
