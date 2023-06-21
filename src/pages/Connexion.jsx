@@ -1,12 +1,59 @@
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonItem, IonLabel, IonSegment, IonSegmentButton, IonIcon, IonButton, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle } from '@ionic/react';
-import { Icon } from '@iconify/react';
-import { bannerHome, logo, collectionBanner, connexionVideo } from "@/assets"
-import BackgroundAnimation from '@/src/animations/BackgroundAnimation';
-import React, {useEffect, useState} from 'react';
-import { IonInput, IonTextarea  } from '@ionic/react';
+import { IonContent, IonButton, IonCard, IonInput } from '@ionic/react'
+import { connexionVideo } from "@/assets"
+import React, { useState } from 'react'
+import { useHistory } from 'react-router'
+import { useDispatch } from 'react-redux'
+import api from '@/src/api/api'
+import { loginSuccess, loginFail } from '@/src/api/store'
+
+let dataForm = {
+    email: "",
+    password: ""
+}
 
 const Connexion = () => {
-    
+    const dispatch = useDispatch()
+    const [message, setMessage] = useState("")
+    const [identifiants, setIdentifiants] = useState(dataForm)
+    const [identifiantsErrors, setIdentifiantsErrors] = useState(dataForm)
+    const history = useHistory()
+  
+    const handleChange = (e) => {
+        let {id, value} = e.target
+
+        setIdentifiants((prev) => ({
+            ...prev,
+            email: id == "email" ? value : prev.email,
+            password: id == "password" ? value : prev.password
+        }))
+
+    }
+    const handleLogin = async (e) => {
+        e.preventDefault()
+        
+        try{
+            const response = await api.login(identifiants)
+            let data = response.data
+
+            if(data.errors){
+                setIdentifiantsErrors((prev) => ({
+                    ...prev,
+                    email: data.errors.emailError ? data.errors.emailError : "Entrez votre email",
+                    password: data.errors.passwordError ? data.errors.passwordError : "Entrez votre mot de passe"
+                }))
+            } else if(data.message){
+                setMessage(data.message)
+            } else if(data.token){
+                dispatch(loginSuccess(data.token))
+                history.push('/')
+            }
+  
+        } catch(error){
+            dispatch(loginFail(error))
+            console.log(error)
+            setMessage("Une erreur c'est produite.")
+        }  
+    }
   
     return (
         <IonContent class="connexion">
@@ -15,29 +62,35 @@ const Connexion = () => {
 
 
             <IonCard class="form">
-                <form action="/">
+                <form onSubmit={handleLogin}>
                     <h1>Connectez-vous</h1>
                     <IonInput
                         className=""
+                        id="email"
                         type="email"
                         fill="solid"
                         label="Email"
                         labelPlacement="floating"
-                        helperText="Entrez votre email">
+                        helperText={identifiantsErrors.email}
+                        onIonInput={handleChange}>
                     </IonInput>
                     <IonInput
                         className=""
                         type="password"
+                        id="password"
                         fill="solid"
                         label="Mot de passe"
                         labelPlacement="floating"
-                        helperText="Entrez votre mot de passe"
-                        errorText="Email non valide">
+                        helperText={identifiantsErrors.password}
+                        errorText="Email non valide"
+                        onIonInput={handleChange}>
                     </IonInput>
 
-                    <ion-router-link class="mdp-oublie">Mot de passe oublié ?</ion-router-link>
+                    {message && <p className='errorMessage'>{ message }</p>}
 
-                    <IonButton class="btn-envoyer">
+                    <ion-router-link class="mdp-oublie">Mot de passe oublié ?</ion-router-link>               
+
+                    <IonButton class="btn-envoyer"  type="submit">
                         Se connecter
                     </IonButton>
 
@@ -45,7 +98,7 @@ const Connexion = () => {
                 </form>
             </IonCard>
         </IonContent>
-    );
-};
+    )
+}
 
-export default Connexion;
+export default Connexion

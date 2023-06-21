@@ -1,9 +1,10 @@
 import { IonButtons, IonButton, IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle } from '@ionic/react';
 import { Icon } from '@iconify/react';
 
-import { collectionBanner, addCart } from "@/assets"
+import { collectionBanner, collectionBanner3, addCart } from "@/assets"
 
 const Collection = () => {
+    
     const handleGoBack = () => {
         window.history.back();
     };
@@ -26,7 +27,7 @@ const Collection = () => {
         </IonHeader>
         <IonContent fullscreen>
             <section className="banner banner-collection">
-                <img src={collectionBanner} alt="Youvence" />
+                <img src={collectionBanner3} alt="Youvence" />
             </section>
             <section className="list list-products">
             <ion-grid>
@@ -45,7 +46,7 @@ const Collection = () => {
                                     <IonCardSubtitle>Shampoing, Après shampoing, Masque hydratant...</IonCardSubtitle>
                                     <div className="content">
                                         <p className='price'>50 € <span>70 €</span></p>
-                                        <IonButton>
+                                        <IonButton  id="present-alert">
                                             <img src={addCart} alt="" />
                                         </IonButton>
                                     </div>

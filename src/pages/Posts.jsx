@@ -1,9 +1,10 @@
 import { IonButtons, IonButton, IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle } from '@ionic/react';
 import { Icon } from '@iconify/react';
-
+import { Link , useHistory } from 'react-router-dom';
 import { collectionBanner, addCart } from "@/assets"
 
 const Collection = () => {
+
     const handleGoBack = () => {
         window.history.back();
     };
@@ -30,7 +31,7 @@ const Collection = () => {
                 <ion-row>
                     <ion-col size="6" size-md="4" size-lg="2">
                         <IonCard class='card-product'>
-                            <ion-router-link href="/posts/loreal">
+                            <Link  to="/posts/loreal">
                                 <div className="top">
                                     <div className="img-wrapper">
                                         <img src={collectionBanner} alt="Youvence" />
@@ -40,17 +41,17 @@ const Collection = () => {
                                 <ion-card-header>
                                     <IonCardTitle>Une routine parfaite pour des cheveux en bonne santé</IonCardTitle>
                                     <IonCardSubtitle>Lorem ipsum dolor sit amet consectetur. Magna lacus vivamus...</IonCardSubtitle>
-                                    <ion-router-link class="btn btn-primary">
+                                    <Link  to="/posts/loreal"  class="btn btn-primary">
                                         Découvrir l'article
-                                    </ion-router-link>
+                                    </Link >
                                 </ion-card-header>
-                            </ion-router-link>
+                            </Link >
 
                         </IonCard>
                     </ion-col>
                     <ion-col size="6" size-md="4" size-lg="2">
                         <IonCard class='card-product'>
-                            <ion-router-link href="/posts/loreal">
+                            <Link  to="/posts/loreal">
                                 <div className="top">
                                     <div className="img-wrapper">
                                         <img src={collectionBanner} alt="Youvence" />
@@ -60,17 +61,17 @@ const Collection = () => {
                                 <ion-card-header>
                                     <IonCardTitle>Une routine parfaite pour des cheveux en bonne santé</IonCardTitle>
                                     <IonCardSubtitle>Lorem ipsum dolor sit amet consectetur. Magna lacus vivamus...</IonCardSubtitle>
-                                    <ion-router-link class="btn btn-primary">
+                                    <Link  to="/posts/loreal"  class="btn btn-primary">
                                         Découvrir l'article
-                                    </ion-router-link>
+                                    </Link >
                                 </ion-card-header>
-                            </ion-router-link>
+                            </Link >
 
                         </IonCard>
                     </ion-col>
                     <ion-col size="6" size-md="4" size-lg="2">
                         <IonCard class='card-product'>
-                            <ion-router-link href="/posts/loreal">
+                            <Link  to="/posts/loreal">
                                 <div className="top">
                                     <div className="img-wrapper">
                                         <img src={collectionBanner} alt="Youvence" />
@@ -80,17 +81,17 @@ const Collection = () => {
                                 <ion-card-header>
                                     <IonCardTitle>Une routine parfaite pour des cheveux en bonne santé</IonCardTitle>
                                     <IonCardSubtitle>Lorem ipsum dolor sit amet consectetur. Magna lacus vivamus...</IonCardSubtitle>
-                                    <ion-router-link class="btn btn-primary">
+                                    <Link  to="/posts/loreal"  class="btn btn-primary">
                                         Découvrir l'article
-                                    </ion-router-link>
+                                    </Link >
                                 </ion-card-header>
-                            </ion-router-link>
+                            </Link >
 
                         </IonCard>
                     </ion-col>
                     <ion-col size="6" size-md="4" size-lg="2">
                         <IonCard class='card-product'>
-                            <ion-router-link href="/posts/loreal">
+                            <Link  to="/posts/loreal">
                                 <div className="top">
                                     <div className="img-wrapper">
                                         <img src={collectionBanner} alt="Youvence" />
@@ -100,17 +101,17 @@ const Collection = () => {
                                 <ion-card-header>
                                     <IonCardTitle>Une routine parfaite pour des cheveux en bonne santé</IonCardTitle>
                                     <IonCardSubtitle>Lorem ipsum dolor sit amet consectetur. Magna lacus vivamus...</IonCardSubtitle>
-                                    <ion-router-link class="btn btn-primary">
+                                    <Link  to="/posts/loreal"  class="btn btn-primary">
                                         Découvrir l'article
-                                    </ion-router-link>
+                                    </ Link>
                                 </ion-card-header>
-                            </ion-router-link>
+                            </Link >
 
                         </IonCard>
                     </ion-col>
                     <ion-col size="6" size-md="4" size-lg="2">
                         <IonCard class='card-product'>
-                            <ion-router-link href="/posts/loreal">
+                            <Link  to="/posts/loreal">
                                 <div className="top">
                                     <div className="img-wrapper">
                                         <img src={collectionBanner} alt="Youvence" />
@@ -120,17 +121,17 @@ const Collection = () => {
                                 <ion-card-header>
                                     <IonCardTitle>Une routine parfaite pour des cheveux en bonne santé</IonCardTitle>
                                     <IonCardSubtitle>Lorem ipsum dolor sit amet consectetur. Magna lacus vivamus...</IonCardSubtitle>
-                                    <ion-router-link class="btn btn-primary">
+                                    <Link  to="/posts/loreal"  class="btn btn-primary">
                                         Découvrir l'article
-                                    </ion-router-link>
+                                    </ Link>
                                 </ion-card-header>
-                            </ion-router-link>
+                            </Link >
 
                         </IonCard>
                     </ion-col>
                     <ion-col size="6" size-md="4" size-lg="2">
                         <IonCard class='card-product'>
-                            <ion-router-link href="/posts/loreal">
+                            <Link  to="/posts/loreal">
                                 <div className="top">
                                     <div className="img-wrapper">
                                         <img src={collectionBanner} alt="Youvence" />
@@ -140,11 +141,11 @@ const Collection = () => {
                                 <ion-card-header>
                                     <IonCardTitle>Une routine parfaite pour des cheveux en bonne santé</IonCardTitle>
                                     <IonCardSubtitle>Lorem ipsum dolor sit amet consectetur. Magna lacus vivamus...</IonCardSubtitle>
-                                    <ion-router-link class="btn btn-primary">
+                                    <Link  to="/posts/loreal"  class="btn btn-primary">
                                         Découvrir l'article
-                                    </ion-router-link>
+                                    </ Link>
                                 </ion-card-header>
-                            </ion-router-link>
+                            </Link >
 
                         </IonCard>
                     </ion-col>

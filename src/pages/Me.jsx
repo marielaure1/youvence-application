@@ -6,6 +6,7 @@ import { bannerHome, logo, collectionBanner } from "@/assets"
 import BackgroundAnimation from '@/src/animations/BackgroundAnimation';
 import React, {useEffect, useState} from 'react';
 import { Redirect, Route } from 'react-router-dom';
+import Header from '@/src/components/layout/Header';
 
 const Me = () => {
     let [segementStatus, setSegementStatus] = useState("infos");
@@ -69,35 +70,7 @@ const Me = () => {
     // class={segementStatus == "produits" ? "active" : ""}  
     return (
         <IonContent class="ion-content-me">
-            <IonHeader class='header-home header-me header-static'>
-               <ion-grid>
-                    <ion-row>
-                        <ion-col></ion-col>
-                        <ion-col class="logo">
-                            <img src={logo} alt="Youvence" />
-                        </ion-col>
-                        <ion-col class="icones">
-                            {/* <Icon icon="ph:heart-light" />
-                            <Icon icon="ph:shopping-cart-simple-light" /> */}
-                        </ion-col>
-                    </ion-row>
-                </ion-grid>
-
-                <IonSegment scrollable={true} value="infos" onClick={handleChange}>
-                    <IonSegmentButton value="infos">
-                        Mes infos personnelles
-                    </IonSegmentButton>
-
-                    <IonSegmentButton value="commandes">
-                        Mes commandes
-                    </IonSegmentButton>
-
-                    <IonSegmentButton value="abonnements">
-                        Mes abonnements
-                    </IonSegmentButton>
-                  
-                </IonSegment>
-            </IonHeader>
+             <Header headerClass="header-contact header-static" color="black"/>
 
             
             <section className={`contact infos ${segementStatus == "infos" ? "active" : ""}`}>
@@ -157,13 +130,6 @@ const Me = () => {
                         onIonInput={(event) => validate(event)}
                         onIonBlur={() => markTouched()}>
                     </IonInput>
-                    <IonTextarea
-                        fill="solid"
-                        label="Email"
-                        labelPlacement="floating"
-                        helperText="Entrez un message">
-                    </IonTextarea>
-
                    <div className="flex align-items-centery">
                    <IonButton class="btn-envoyer">
                         Envoyer

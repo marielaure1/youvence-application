@@ -16,9 +16,7 @@ const Home = () => {
 
         sections.forEach((section) => {
             const offsetTop = section.offsetTop;
-            const dataColor = section.getAttribute('data-color');
-
-            
+            const dataColor = section.getAttribute('data-color');  
     
             if (
               scrollY > offsetTop - window.innerHeight / 3 &&
@@ -28,12 +26,6 @@ const Home = () => {
             } 
         });
     };
-    
-
-    useEffect(() => {
-      
-    }, [])
-    // style={{ '--background': backgroundColor }}
     
     return (
         <IonContent scrollEvents={true} onIonScroll={handleScroll} style={{ 'background': backgroundColor }}>
@@ -156,7 +148,7 @@ const Home = () => {
                             </ion-col>
                             <ion-col size="5" class="time-collection">
                                 <Icon icon="ph:timer-light" />
-                                <p>06j 05h 07m</p>
+                                <p>01j 05h 07m</p>
                             </ion-col>
                         </ion-row>
                     </ion-grid>
@@ -172,7 +164,7 @@ const Home = () => {
                             </ion-col>
                             <ion-col size="5" class="time-collection">
                                 <Icon icon="ph:timer-light" />
-                                <p>06j 05h 07m</p>
+                                <p>01j 05h 07m</p>
                             </ion-col>
                         </ion-row>
                     </ion-grid>
@@ -188,7 +180,7 @@ const Home = () => {
                             </ion-col>
                             <ion-col size="5" class="time-collection">
                                 <Icon icon="ph:timer-light" />
-                                <p>06j 05h 07m</p>
+                                <p>01j 05h 07m</p>
                             </ion-col>
                         </ion-row>
                     </ion-grid>
@@ -204,7 +196,7 @@ const Home = () => {
                             </ion-col>
                             <ion-col size="5" class="time-collection">
                                 <Icon icon="ph:timer-light" />
-                                <p>06j 05h 07m</p>
+                                <p>01j 05h 07m</p>
                             </ion-col>
                         </ion-row>
                     </ion-grid>
@@ -237,7 +229,7 @@ const Home = () => {
                             </ion-col>
                             <ion-col size="5" class="time-collection">
                                 <Icon icon="ph:timer-light" />
-                                <p>06j 05h 07m</p>
+                                <p>Dans 03j 05h 07m</p>
                             </ion-col>
                         </ion-row>
                     </ion-grid>
@@ -253,7 +245,7 @@ const Home = () => {
                             </ion-col>
                             <ion-col size="5" class="time-collection">
                                 <Icon icon="ph:timer-light" />
-                                <p>06j 05h 07m</p>
+                                <p>Dans 03j 05h 07m</p>
                             </ion-col>
                         </ion-row>
                     </ion-grid>
@@ -269,12 +261,13 @@ const Home = () => {
                             </ion-col>
                             <ion-col size="5" class="time-collection">
                                 <Icon icon="ph:timer-light" />
-                                <p>06j 05h 07m</p>
+                                <p>Dans 03j 05h 07m</p>
                             </ion-col>
                         </ion-row>
                     </ion-grid>
 
                 </IonCard>
+                
                 <IonCard class='card-collection'>
                     <img src={collectionBanner} alt="Youvence" />
 
@@ -285,7 +278,7 @@ const Home = () => {
                             </ion-col>
                             <ion-col size="5" class="time-collection">
                                 <Icon icon="ph:timer-light" />
-                                <p>06j 05h 07m</p>
+                                <p>Dans 03j 05h 07m</p>
                             </ion-col>
                         </ion-row>
                     </ion-grid>

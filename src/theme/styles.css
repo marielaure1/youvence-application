@@ -1,0 +1,687 @@
+/**
+ * Fonts
+ */
+@font-face {
+  font-family: "Culture";
+  src: url("@/assets/fonts/Culture.otf") format("opentype");
+  font-weight: normal;
+}
+@font-face {
+  font-family: "Culture";
+  src: url("@/assets/fonts/Culture-Bold.otf") format("opentype");
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Caviar Dreams";
+  src: url("@/assets/fonts/CaviarDreams.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Caviar Dreams";
+  src: url("@/assets/fonts/CaviarDreams_Italic.ttf") format("truetype");
+  font-weight: normal;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Caviar Dreams";
+  src: url("@/assets/fonts/CaviarDreams_Bold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Caviar Dreams";
+  src: url("@/assets/fonts/CaviarDreams_BoldItalic.ttf") format("truetype");
+  font-weight: bold;
+  font-style: italic;
+}
+:root {
+  /* Font */
+  --ft-primary: "Culture", "Times New Roman", "serif";
+  --ft-secondary: "Caviar Dreams", "sans-serif";
+  /* Couleur */
+  --cl-black: #282828;
+  --cl-white: #FFFFFF;
+  --cl-pink1: #F2AAAE;
+  --cl-pink2: #FDE9EA;
+  --cl-beige1: #F4C09D;
+  --cl-beige2: #F5DBC8;
+  --cl-green1: #C9E0C4;
+  --cl-green2: #E3F0E0;
+  --cl-blue1: #D0E9E9;
+  --cl-blue2: #E8F2F2;
+  --cl-brown1: #915946;
+  --cl-brown2: #E0C2B8;
+  --cl-green: #566D46;
+  --cl-kaki: #899481;
+  --cl-red: rgb(255, 0, 60);
+  /* Ionic variables */
+  --ion-tab-bar-background: var(--cl-brown1);
+  --ion-font-family: var(--ft-secondary);
+  --color: var(--cl-black);
+  color: var(--cl-black);
+}
+
+ion-tab {
+  padding: 10px 0;
+}
+
+ion-tab-button {
+  padding: 10px;
+}
+
+ion-label {
+  font-size: 20px;
+}
+
+.header-md::after {
+  display: none;
+}
+
+ion-segment-button {
+  --indicator-height: 0;
+}
+
+ion-segment-button.ion-activated {
+  --background-activated-opacity: 0;
+}
+
+ion-card, ion-grid, ion-row {
+  margin: 0;
+  padding: 0;
+}
+
+ion-content {
+  transition: all 0.5s ease;
+  --background: none;
+  background: var(--cl-beige2);
+}
+
+.title {
+  font-size: 36px;
+  color: var(--cl-white);
+  text-transform: uppercase;
+  font-family: var(--ft-primary);
+  font-weight: 600;
+}
+
+section {
+  padding: 50px 15px;
+}
+
+.btn {
+  padding: 10px;
+  font-family: var(--ft-primary);
+}
+
+.btn-primary {
+  --ion-color-primary: var(--cl-white);
+  background: var(--cl-brown1);
+}
+
+.text-align-center {
+  text-align: center;
+}
+
+.header-static {
+  position: static !important;
+}
+
+.flex {
+  display: flex;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+a {
+  text-decoration: none;
+}
+
+.errorMessage {
+  margin-top: 30px;
+  color: var(--cl-white);
+  text-align: center;
+}
+
+.header-home {
+  position: absolute;
+  top: 0;
+  left: 0;
+  --ion-background-color: transparent;
+}
+.header-home img {
+  width: 70px;
+}
+.header-home ion-col.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.header-home ion-col.icones {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+.header-home ion-col.icones .iconify {
+  color: white;
+  font-size: 24px;
+  margin-right: 10px;
+}
+.header-home ion-segment {
+  --background: transparent;
+}
+.header-home ion-segment ion-segment-button {
+  padding: 0px;
+  min-width: inherit;
+  --indicator-box-shadow: transparent;
+  text-transform: inherit;
+  display: inline-block;
+  --color: var(--cl-white);
+  font-family: var(--ft-primary);
+  font-weight: 500;
+  font-size: 16px;
+  text-transform: inherit;
+}
+.header-home ion-segment::-webkit-scrollbar {
+  display: none;
+}
+
+.banner-home {
+  --ion-background-color: red;
+  height: calc(100vh - 48px);
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.banner-home img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+.banner-home h1 {
+  font-size: 54px;
+  color: var(--cl-white);
+  font-family: var(--ft-primary);
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.a-propos p {
+  color: var(--cl-white);
+}
+
+.card-collection {
+  position: relative;
+  display: flex;
+  align-items: end;
+  aspect-ratio: 3/2;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--cl-black);
+  margin-bottom: 20px;
+}
+.card-collection img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+.card-collection ion-grid {
+  background: rgba(255, 255, 255, 0.749);
+}
+.card-collection ion-grid ion-row ion-col h3 {
+  font-size: 12px;
+  margin: 0;
+}
+.card-collection .title-collection h3, .card-collection .title-collection p, .card-collection .time-collection h3, .card-collection .time-collection p {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--cl-black);
+}
+.card-collection .title-collection h3 {
+  font-family: var(--ft-primary);
+}
+.card-collection .time-collection {
+  display: flex;
+  align-items: center;
+}
+.card-collection .time-collection svg {
+  margin-right: 10px;
+  font-size: 20px;
+  color: var(--cl-black);
+}
+
+.article-home {
+  color: var(--cl-black);
+}
+.article-home h3 {
+  font-family: var(--ft-primary);
+  font-weight: 600;
+  font-size: 24px;
+}
+.article-home p {
+  font-size: 14px;
+  margin-bottom: 30px;
+}
+
+.header-collection {
+  width: 100%;
+}
+.header-collection ion-toolbar {
+  width: 100%;
+}
+.header-collection ion-toolbar .content {
+  display: grid;
+  grid-template-columns: 20% 60% 20%;
+}
+.header-collection ion-toolbar .content ion-button {
+  --background: transparent;
+  --color: var(--cl-black);
+  padding: 0;
+  margin: 0;
+  width: -moz-fit-content;
+  width: fit-content;
+  --box-shadow: none;
+}
+.header-collection ion-toolbar .content ion-button svg {
+  font-size: 24px;
+}
+.header-collection ion-toolbar .content ion-title {
+  text-align: center;
+  font-family: var(--ft-primary);
+}
+
+.banner-collection {
+  padding: 0;
+  height: 50vh;
+  position: relative;
+}
+.banner-collection img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.list {
+  padding: 50px 10px;
+}
+.list ion-col {
+  padding: 0;
+}
+
+.card-product {
+  background: transparent;
+  box-shadow: none;
+  border-radius: 0;
+  padding: 10px 5px;
+}
+.card-product .top {
+  position: relative;
+}
+.card-product .top .img-wrapper {
+  aspect-ratio: 3/2;
+}
+.card-product .top .img-wrapper img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  height: 100%;
+  width: 100%;
+}
+.card-product .btn {
+  margin-top: 20px;
+  text-align: center;
+}
+.card-product .content {
+  display: flex;
+  justify-content: space-between;
+}
+.card-product .content .price {
+  color: var(--cl-brown1);
+  font-weight: 600;
+}
+.card-product .content .price span {
+  text-decoration: line-through;
+  margin-left: 10px;
+  font-size: 10px;
+}
+.card-product .content ion-button {
+  --background: none;
+  --box-shadow: none;
+  background: var(--cl-white);
+  color: var(--cl-black);
+  padding: 0;
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between !important;
+}
+.card-product .content ion-button::part(native):first-child {
+  justify-content: space-between;
+}
+.card-product ion-card-header {
+  padding: 10px 0;
+  --background: none;
+  background: transparent;
+}
+.card-product ion-card-header ion-card-title {
+  font-size: 12px;
+  font-family: var(--ft-primary);
+  font-weight: 600;
+}
+.card-product ion-card-header ion-card-subtitle {
+  font-size: 10px;
+  color: var(--cl-black);
+}
+
+.list-products {
+  background: var(--cl-beige2);
+}
+
+.gallerie {
+  padding: 0;
+}
+.gallerie img {
+  width: 100%;
+  margin-top: 5px;
+}
+
+.details p {
+  color: var(--cl-brown1);
+  font-weight: 500;
+}
+
+ion-accordion {
+  --background: none;
+  background-color: transparent;
+}
+ion-accordion .ion-color-light {
+  --ion-color-base: transparent!important;
+  --ion-color-shade: var(--cl-brown1)!important;
+  --ion-color-contrast: var(--cl-brown1)!important;
+  --border-width: 0 0 2px 0;
+}
+ion-accordion .ion-color-light ion-icon {
+  --ion-color-contrast: var(--cl-brown1)!important;
+}
+ion-accordion > div {
+  color: var(--cl-brown1);
+}
+
+.banner-product {
+  padding: 0;
+}
+.banner-product swiper-container {
+  --swiper-pagination-color: var(--cl-brown1)!important;
+}
+.banner-product swiper-slide img {
+  height: 100%;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.banner-post {
+  padding: 0;
+}
+.banner-post img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.plans {
+  background-color: var(--cl-green);
+  min-height: calc(100vh - 48px);
+  padding: 150px 10px;
+}
+.plans .card-plans {
+  border: white 1px solid;
+  margin-bottom: 20px;
+  color: var(--cl-white);
+}
+.plans .card-plans > div {
+  padding: 20px;
+}
+.plans .card-plans ion-button {
+  padding: 0;
+  margin: 0;
+  --box-shadow: 0;
+  --border-radius: 0;
+  width: 100%;
+  --background: white;
+  color: var(--cl-black);
+}
+
+.input-fill-solid.has-focus.sc-ion-input-md-h,
+.input-fill-solid.sc-ion-input-md-h,
+.textarea-fill-solid.has-focus.sc-ion-textarea-md-h,
+.textarea-fill-solid.sc-ion-textarea-md-h {
+  --background: transparent;
+  --border-color: transparent;
+}
+
+.input-label-placement-floating.has-focus.sc-ion-input-md-h .label-text-wrapper.sc-ion-input-md,
+.input-label-placement-floating.sc-ion-input-md-h .label-text-wrapper.sc-ion-input-md,
+.textarea-label-placement-floating.has-focus.sc-ion-textarea-md-h .label-text-wrapper.sc-ion-textarea-md,
+.textarea-label-placement-floating.sc-ion-textarea-md-h .label-text-wrapper.sc-ion-textarea-md {
+  color: var(--cl-brown1);
+  font-weight: 20px;
+  font-family: var(--ft-primary);
+}
+
+.input-bottom.sc-ion-input-md .helper-text.sc-ion-input-md,
+.textarea-bottom.sc-ion-textarea-md .helper-text.sc-ion-textarea-md {
+  color: var(--cl-brown1);
+}
+
+.input-highlight.sc-ion-input-md,
+.textarea-highlight.sc-ion-textarea-md {
+  background: var(--cl-brown1);
+}
+
+.sc-ion-input-md-h .input-highlight.sc-ion-input-md,
+.sc-ion-textarea-md-h .textarea-highlight.sc-ion-textarea-md {
+  transform: scale(1);
+}
+
+.contact {
+  padding: 30px 15px;
+}
+.contact ion-input {
+  margin-bottom: 20px;
+}
+
+.btn-envoyer {
+  --background: none;
+  --color: none;
+  background-color: var(--cl-brown1);
+  color: var(--cl-white);
+  margin-top: 20px;
+}
+
+.header-contact ion-segment-button {
+  color: var(--cl-black);
+}
+
+#google-map {
+  aspect-ratio: 3/2;
+  width: 100%;
+  height: 60vw;
+}
+
+.coords {
+  margin-top: 30px;
+}
+.coords p {
+  font-size: 14px;
+}
+
+.ion-content-search {
+  background-color: var(--cl-pink2);
+  --box-shadow: none;
+  box-shadow: none;
+}
+
+.header-search ion-toolbar ion-label {
+  color: var(--cl-brown1);
+  font-size: 16px;
+}
+.header-search ion-searchbar {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  --box-shadow: none;
+}
+.header-search ion-searchbar .searchbar-input.sc-ion-searchbar-md {
+  padding: 20px 20px 20px 50px;
+}
+.header-search ion-searchbar .searchbar-search-icon.sc-ion-searchbar-md {
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.header-search .segment-button-checked {
+  border-bottom: 2px solid var(--cl-brown1);
+}
+
+.search .card-product, .search ion-list {
+  --background: transparent;
+  background: transparent;
+}
+.search .card-product ion-row, .search ion-list ion-row {
+  display: none;
+}
+.search .card-product ion-row.active, .search ion-list ion-row.active {
+  display: flex;
+}
+.search .card-product .content .price, .search ion-list .content .price {
+  color: var(--cl-black);
+}
+
+.header-me ion-segment-button {
+  color: var(--cl-black);
+}
+
+.infos, .commandes, .abonnements {
+  display: none;
+}
+
+.infos.active, .commandes.active, .abonnements.active {
+  display: block;
+}
+
+.infos ion-card {
+  --background: transparent;
+  box-shadow: none;
+  display: none;
+}
+.infos ion-card ion-card-title span {
+  font-size: 18px;
+  margin-right: 20px;
+}
+.infos form {
+  display: none;
+}
+.infos form .flex {
+  margin-top: 20px;
+}
+.infos form .flex .btn-envoyer {
+  margin: 0;
+  margin-right: 10px;
+}
+.infos form .flex .btn-annuler {
+  --background: white;
+  --box-shadow: none;
+  --border-radius: none;
+  color: black;
+  margin: 0;
+}
+.infos ion-card.active, .infos form.active {
+  display: block;
+}
+
+.connexion, .inscription {
+  position: relative;
+}
+.connexion video, .inscription video {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -20;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.connexion .form, .inscription .form {
+  background-color: rgba(9, 9, 9, 0.603);
+  box-shadow: none;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: inherit;
+  padding-top: 30px;
+}
+.connexion .form form, .inscription .form form {
+  width: 90%;
+  min-width: 300px;
+}
+.connexion .form form h1, .inscription .form form h1 {
+  color: var(--cl-white);
+  font-family: var(--ft-primary);
+}
+.connexion .form form .input-label-placement-floating.has-focus.sc-ion-input-md-h .label-text-wrapper.sc-ion-input-md,
+.connexion .form form .input-label-placement-floating.sc-ion-input-md-h .label-text-wrapper.sc-ion-input-md,
+.connexion .form form .textarea-label-placement-floating.has-focus.sc-ion-textarea-md-h .label-text-wrapper.sc-ion-textarea-md,
+.connexion .form form .textarea-label-placement-floating.sc-ion-textarea-md-h .label-text-wrapper.sc-ion-textarea-md, .inscription .form form .input-label-placement-floating.has-focus.sc-ion-input-md-h .label-text-wrapper.sc-ion-input-md,
+.inscription .form form .input-label-placement-floating.sc-ion-input-md-h .label-text-wrapper.sc-ion-input-md,
+.inscription .form form .textarea-label-placement-floating.has-focus.sc-ion-textarea-md-h .label-text-wrapper.sc-ion-textarea-md,
+.inscription .form form .textarea-label-placement-floating.sc-ion-textarea-md-h .label-text-wrapper.sc-ion-textarea-md {
+  color: var(--cl-white);
+}
+.connexion .form form .input-bottom.sc-ion-input-md .helper-text.sc-ion-input-md,
+.connexion .form form .textarea-bottom.sc-ion-textarea-md .helper-text.sc-ion-textarea-md, .inscription .form form .input-bottom.sc-ion-input-md .helper-text.sc-ion-input-md,
+.inscription .form form .textarea-bottom.sc-ion-textarea-md .helper-text.sc-ion-textarea-md {
+  color: var(--cl-white);
+}
+.connexion .form form .input-highlight.sc-ion-input-md,
+.connexion .form form .textarea-highlight.sc-ion-textarea-md, .inscription .form form .input-highlight.sc-ion-input-md,
+.inscription .form form .textarea-highlight.sc-ion-textarea-md {
+  background: var(--cl-white);
+}
+.connexion .form form .mdp-oublie, .connexion .form form .link-form, .inscription .form form .mdp-oublie, .inscription .form form .link-form {
+  margin-top: 20px;
+  text-align: center;
+  width: 100%;
+  display: inherit;
+  font-size: 12px;
+  color: var(--cl-pink1);
+}
+.connexion .form form ion-button, .inscription .form form ion-button {
+  margin-left: 50%;
+  transform: translateX(-50%);
+}
+.connexion .form form .link-form, .inscription .form form .link-form {
+  margin-top: 40px;
+}/*# sourceMappingURL=styles.css.map */

@@ -2,7 +2,7 @@ import { IonButtons, IonButton, IonContent, IonHeader, IonPage, IonTitle, IonToo
 import { Icon } from '@iconify/react';
 import { useEffect } from 'react';
 
-import { collectionBanner, addCart } from "@/assets"
+import { collectionBanner, collectionBanner4, addCart } from "@/assets"
 
 import { register } from 'swiper/element/bundle';
 
@@ -12,6 +12,7 @@ const Collection = () => {
     const handleGoBack = () => {
         window.history.back();
     };
+    
 
     useEffect(() => {
         register();
@@ -65,7 +66,7 @@ const Collection = () => {
                     </IonAccordion>
                     <IonAccordion value="second">
                         <IonItem slot="header" color="light">
-                            <IonLabel>Ingrédients</IonLabel>
+                            <IonLabel>Composition</IonLabel>
                         </IonItem>
                         <div className="ion-padding" slot="content">
                         Lorem ipsum dolor sit amet consectetur. Magna lacus vivamus accumsan quisque egestas commodo consequat elementum. Sapien turpis sagittis tristique nunc pellentesque.

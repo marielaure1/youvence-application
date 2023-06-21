@@ -1,9 +1,10 @@
 import { IonHeader, IonSegment, IonSegmentButton, IonRouterLink } from '@ionic/react';
 import { logo, logoBlack } from "@/assets"
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 
 const Header = ({ headerClass = "", color = "white" }) => {
-    
+
     return (
         <IonHeader className={`header-home ${headerClass}`}>
         <ion-grid>
@@ -25,13 +26,11 @@ const Header = ({ headerClass = "", color = "white" }) => {
                         Accueil
                     </IonSegmentButton>
                 </IonRouterLink >
-
                 <IonRouterLink  routerLink="/collections">
                     <IonSegmentButton value="youluxe">
                         Collections
                     </IonSegmentButton>
-                </IonRouterLink >
-
+                </IonRouterLink>
                 <IonRouterLink  routerLink="/posts">
                     <IonSegmentButton value="youdiscovery">
                         Articles

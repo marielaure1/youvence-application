@@ -1,32 +1,40 @@
 import { IonButtons, IonButton, IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle } from '@ionic/react';
 import { Icon } from '@iconify/react';
-
-import { collectionBanner, addCart } from "@/assets"
+import Header from '@/src/components/layout/Header';
+import BackgroundAnimation from '@/src/animations/BackgroundAnimation';
+import { collectionBanner, collectionBanner2,  addCart } from "@/assets"
+import React, {useState} from 'react';
 
 const Collection = () => {
-    const handleGoBack = () => {
-        window.history.back();
-    };
+    const [backgroundColor, setBackgroundColor] = useState("")
 
+    const handleScroll = (e) => {
+        const ionContent = e.target
+        const sections = document.querySelectorAll('.background');
+        const scrollY = e.detail.currentY
+
+        sections.forEach((section) => {
+            const offsetTop = section.offsetTop;
+            const dataColor = section.getAttribute('data-color');
+
+            
+    
+            if (
+              scrollY > offsetTop - window.innerHeight / 3 &&
+              scrollY < offsetTop + section.offsetHeight - window.innerHeight / 3
+            ) {
+                setBackgroundColor(dataColor)
+            } 
+        });
+    };
   return (
-    <IonPage>
-        <IonHeader className='header-collection' slot="fixed">
-            <IonToolbar>
-               <div className="content">
-                    <IonButton onClick={handleGoBack}>
-                        <Icon icon="ph:arrow-circle-left-thin" />
-                    </IonButton>
-                    <IonTitle>Nom de la collection</IonTitle>
-                    <div className="icones">
-                        {/* <Icon icon="ph:heart-light" />
-                                <Icon icon="ph:shopping-cart-simple-light" /> */}
-                    </div>
-               </div>
-            </IonToolbar>
-        </IonHeader>
-        <IonContent fullscreen>
+        <IonContent  scrollEvents={true} onIonScroll={handleScroll} style={{ 'background': backgroundColor }}>
+            <Header/>
+        
+        <BackgroundAnimation />
+
             <section className="banner banner-collection">
-                <img src={collectionBanner} alt="Youvence" />
+                <img src={collectionBanner2} alt="Youvence" />
             </section>
             <section className="nouveautes background" data-color="#915946">
                 <h2 className="title animation animation-bounce-letter" data-on-view="true" data-duration="10" >Nouveautés</h2>
@@ -260,7 +268,6 @@ const Collection = () => {
                 </IonCard>
             </section>
         </IonContent>
-    </IonPage>
   );
 };
 

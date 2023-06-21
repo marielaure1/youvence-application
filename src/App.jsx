@@ -31,16 +31,19 @@ import '@ionic/react/css/display.css';
 import './theme/styles.scss'
 
 /* Components */
-import Tabs from './components/layout/Tabs'
 // import "@/assets/js/app.js"
 
 setupIonicReact();
 
+import Tabs from './components/layout/Tabs';
 
 const App = () => (
   <IonApp>
-      <Tabs/>
+    <IonReactRouter>
+      <Tabs />
+    </IonReactRouter>
   </IonApp>
 );
 
 export default App;
+

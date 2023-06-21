@@ -1,11 +1,78 @@
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonItem, IonLabel, IonSegment, IonSegmentButton, IonIcon, IonButton, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle } from '@ionic/react';
-import { Icon } from '@iconify/react';
-import { bannerHome, logo, collectionBanner, inscriptionVideo } from "@/assets"
-import BackgroundAnimation from '@/src/animations/BackgroundAnimation';
-import React, {useEffect, useState} from 'react';
-import { IonInput, IonTextarea  } from '@ionic/react';
+import { IonContent, IonButton, IonCard, IonInput} from '@ionic/react'
+import { inscriptionVideo } from "@/assets"
+import React, { useState, useEffect } from 'react'
+import { useHistory } from 'react-router'
+import { useDispatch } from 'react-redux'
+import api from '@/src/api/api'
+import { registerSuccess, registerFail } from '@/src/api/store'
 
+let dataForm = {
+    last_name: "",
+    first_name: "",
+    email: "",
+    password: "",
+    verifPassword: "",
+}
 const Inscription = () => {
+    const dispatch = useDispatch()
+    const [message, setMessage] = useState("")
+    const [userDatas, setUserDatas] = useState(dataForm)
+    const [userDatasErrors, setUserDatasErrors] = useState(dataForm)
+    const history = useHistory()
+  
+    const handleChange = (e) => {
+        let {id, value} = e.target
+
+        setUserDatas((prev) => ({
+            ...prev,
+            last_name: id == "last_name" ? value : prev.last_name,
+            first_name: id == "first_name" ? value : prev.first_name,
+            email: id == "email" ? value : prev.email,
+            password: id == "password" ? value : prev.password,
+            verifPassword: id == "verifPassword" ? value : prev.verifPassword
+        }))
+
+
+    }
+    const handleRegister = async (e) => {
+        e.preventDefault()
+
+        console.log("test");
+        
+        try{
+            const response = await api.register(userDatas)
+            let data = response?.data
+
+            console.log(response);
+
+            if(data?.error){
+                setUserDatasErrors((prev) => ({
+                    ...prev,
+                    last_name: data.error.last_nameError ? data.error.last_nameError : "",
+                    first_name: data.error.first_nameError ? data.error.first_nameError : "",
+                    email: data.error.emailError ? data.error.emailError : "",
+                    password: data.error.passwordError ? data.error.passwordError : "",
+                    verifPassword: data.error.verifPasswordError ? data.error.verifPasswordError : ""
+                }))
+
+            } else if(data?.token){
+                dispatch(registerSuccess(data.token))
+                history.push('/')
+            } else if(data?.message){
+                setMessage(data.message)
+            }
+  
+        } catch(error){
+            dispatch(registerFail(error))
+            console.log(error)
+            
+            setMessage("Une erreur c'est produite.")
+        }  
+    }
+
+    useEffect(() => {
+      console.log(userDatas);
+    }, [userDatas])
     
   
     return (
@@ -13,9 +80,8 @@ const Inscription = () => {
          
             <video autoPlay loop muted src={inscriptionVideo}></video>
 
-
             <IonCard class="form">
-                <form action="">
+                <form onSubmit={handleRegister}>
                     <h1>Inscrivez-vous</h1>
                     <IonInput
                         className=""
@@ -23,7 +89,9 @@ const Inscription = () => {
                         fill="solid"
                         label="Nom"
                         labelPlacement="floating"
-                        helperText="Entrez votre nom">
+                        id="last_name"
+                        helperText={userDatasErrors.last_name}
+                        onIonInput={handleChange}>
                     </IonInput>
                     <IonInput
                         className=""
@@ -31,7 +99,9 @@ const Inscription = () => {
                         fill="solid"
                         label="Prénom"
                         labelPlacement="floating"
-                        helperText="Entrez votre prénom">
+                        id="first_name"
+                        helperText={userDatasErrors.first_name}
+                        onIonInput={handleChange}>
                     </IonInput>
                     <IonInput
                         className=""
@@ -39,7 +109,9 @@ const Inscription = () => {
                         fill="solid"
                         label="Email"
                         labelPlacement="floating"
-                        helperText="Entrez votre email">
+                        id="email"
+                        helperText={userDatasErrors.email}
+                        onIonInput={handleChange}>
                     </IonInput>
                     <IonInput
                         className=""
@@ -47,8 +119,9 @@ const Inscription = () => {
                         fill="solid"
                         label="Mot de passe"
                         labelPlacement="floating"
-                        helperText="Entrez votre mot de passe"
-                        errorText="Email non valide">
+                        id="password"
+                        helperText={userDatasErrors.password}
+                        onIonInput={handleChange}>
                     </IonInput>
                     <IonInput
                         className=""
@@ -56,11 +129,13 @@ const Inscription = () => {
                         fill="solid"
                         label="Confirmer le mot de passe"
                         labelPlacement="floating"
-                        helperText="Confirmez votre mot de passe"
-                        errorText="Email non valide">
+                        id="verifPassword"
+                        helperText={userDatasErrors.verifPassword}
+                        onIonInput={handleChange}>
                     </IonInput>
 
-                    <IonButton class="btn-envoyer">
+                    {message && <p className='errorMessage'>{ message }</p>}
+                    <IonButton class="btn-envoyer" type="submit">
                         S'inscrire
                     </IonButton>
 
@@ -68,7 +143,7 @@ const Inscription = () => {
                 </form>
             </IonCard>
         </IonContent>
-    );
-};
+    )
+}
 
-export default Inscription;
+export default Inscription
