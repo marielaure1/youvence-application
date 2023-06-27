@@ -116,8 +116,11 @@ section {
 }
 
 .btn-primary {
-  --ion-color-primary: var(--cl-white);
   background: var(--cl-brown1);
+  --ion-color-primary: transparent;
+  background: var(--cl-brown1);
+  --box-shadow: none;
+  --color: var(--cl-white);
 }
 
 .text-align-center {
@@ -144,6 +147,15 @@ a {
   margin-top: 30px;
   color: var(--cl-white);
   text-align: center;
+}
+
+.cl-red {
+  color: crimson;
+}
+
+.message {
+  margin-top: 30px;
+  color: purple;
 }
 
 .header-home {
@@ -395,6 +407,19 @@ a {
   background: var(--cl-beige2);
 }
 
+.card-collection ion-item {
+  width: 100%;
+  height: 100%;
+}
+.card-collection ion-item img {
+  width: 100%;
+  height: 100%;
+}
+.card-collection ion-item ion-grid {
+  width: 100%;
+  height: 100%;
+}
+
 .gallerie {
   padding: 0;
 }
@@ -448,18 +473,48 @@ ion-accordion > div {
   height: 100%;
 }
 
+.card-article ion-card-content {
+  -webkit-padding-start: 0;
+          padding-inline-start: 0;
+  -webkit-padding-end: 0;
+          padding-inline-end: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+.card-article img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
 .plans {
-  background-color: var(--cl-green);
+  --background: var(--cl-green);
   min-height: calc(100vh - 48px);
   padding: 150px 10px;
+  --padding-top: 150px;
+  --padding-bottom: 40px;
+  --padding-start: 20px;
+  --padding-end: 20px;
 }
 .plans .card-plans {
   border: white 1px solid;
   margin-bottom: 20px;
   color: var(--cl-white);
+  --background: transparent;
+  box-shadow: none;
+  border-radius: 0px;
 }
-.plans .card-plans > div {
+.plans .card-plans > ion-card-content {
   padding: 20px;
+}
+.plans .card-plans h2 {
+  margin-bottom: 20px;
+}
+.plans .card-plans .description {
+  --background: transparent;
+  --color: $cl-white;
+  margin-bottom: 20px;
 }
 .plans .card-plans ion-button {
   padding: 0;
@@ -684,4 +739,68 @@ ion-accordion > div {
 }
 .connexion .form form .link-form, .inscription .form form .link-form {
   margin-top: 40px;
+}
+
+.checkout {
+  --background: var(--cl-green);
+  min-height: calc(100vh - 48px);
+  padding: 150px 10px;
+  --padding-top: 150px;
+  --padding-bottom: 40px;
+  --padding-start: 20px;
+  --padding-end: 20px;
+}
+.checkout .card-checkout {
+  border: white 1px solid;
+  margin-bottom: 20px;
+  color: var(--cl-white);
+  --background: transparent;
+  box-shadow: none;
+  border-radius: 0px;
+}
+.checkout .card-checkout > ion-card-content {
+  padding: 20px;
+}
+.checkout .card-checkout h2 {
+  margin-bottom: 20px;
+}
+.checkout .card-checkout .description {
+  --background: transparent;
+  --color: $cl-white;
+  margin-bottom: 20px;
+  border-bottom: 1px solid white;
+  padding-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+.checkout .card-checkout .price {
+  text-align: end;
+}
+.checkout .card-checkout ion-button {
+  padding: 0;
+  margin: 0;
+  --box-shadow: 0;
+  --border-radius: 0;
+  width: 100%;
+  --background: white;
+  color: var(--cl-black);
+}
+.checkout .card-checkout .code input {
+  background-color: transparent;
+  color: var(--cl-white);
+  border: none;
+  width: 100%;
+  padding: 10px 0 20px 0;
+}
+.checkout .card-checkout .code input::-moz-placeholder {
+  color: var(--cl-white);
+}
+.checkout .card-checkout .code input::placeholder {
+  color: var(--cl-white);
+}
+.checkout .card-checkout .code ion-button {
+  width: -moz-fit-content;
+  width: fit-content;
+  --background: var(--cl-pink2);
+  margin-bottom: 20px;
 }/*# sourceMappingURL=styles.css.map */

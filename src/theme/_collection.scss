@@ -132,3 +132,20 @@
 .list-products{
     background: var(--cl-beige2);
 }
+
+.card-collection{
+    ion-item{
+        width: 100%;
+        height: 100%;
+
+        img{
+            width: 100%;
+            height: 100%;
+        }
+
+        ion-grid{
+            width: 100%;
+             height: 100%;
+        }
+    }
+}

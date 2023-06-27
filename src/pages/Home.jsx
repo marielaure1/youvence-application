@@ -55,8 +55,8 @@ const Home = () => {
                 <h2 className="title animation animation-bounce-letter" data-on-view="true" data-duration="10" >Nouveautés</h2>
 
                 <IonCard class='card-collection'>
-                    <IonRouterLink  routerLink="/collections/loreal">
-                        <img src={collectionBanner} alt="Youvence" />
+                    <IonItem  routerLink="/collections/loreal">
+                        <IonImg src={collectionBanner} alt="Youvence" />
 
                         <ion-grid>
                             <ion-row>
@@ -69,7 +69,7 @@ const Home = () => {
                                 </ion-col>
                             </ion-row>
                         </ion-grid>
-                    </IonRouterLink >
+                    </IonItem >
 
                 </IonCard>
                 <IonCard class='card-collection'>

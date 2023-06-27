@@ -1,4 +1,4 @@
-.plans{
+.checkout{
     --background: var(--cl-green);
     min-height: calc(100vh - 48px);
     padding: 150px 10px;
@@ -7,7 +7,7 @@
     --padding-start: 20px;
     --padding-end: 20px;
 
-    .card-plans{
+    .card-checkout{
         border: white 1px solid;
         margin-bottom: 20px;
         color: var(--cl-white);
@@ -26,7 +26,16 @@
             --background: transparent;
             --color: $cl-white;
             margin-bottom: 20px;
+            border-bottom: 1px solid white;
+            padding-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
         }
+
+        .price{
+            text-align: end;
+        }
+
         ion-button{
             padding: 0;
             margin: 0;
@@ -36,5 +45,26 @@
             --background: white;
             color: var(--cl-black);
         }
+
+        .code{
+            input{
+                background-color: transparent;
+                color: var(--cl-white);
+                border: none;
+                width: 100%;
+                padding: 10px 0 20px 0;
+            }
+
+            input::placeholder{
+                color: var(--cl-white);
+            }
+
+            ion-button{
+                width: fit-content;
+                --background: var(--cl-pink2);
+                margin-bottom: 20px;
+            }
+        }
+        
     }
 }

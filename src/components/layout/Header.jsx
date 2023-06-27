@@ -1,13 +1,18 @@
-import { IonHeader, IonSegment, IonSegmentButton, IonRouterLink } from '@ionic/react';
+import { IonHeader, IonSegment, IonSegmentButton } from '@ionic/react';
 import { logo, logoBlack } from "@/assets"
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 
 const Header = ({ headerClass = "", color = "white" }) => {
+    const history = useHistory();
+
+    const navigateTo = (path) => {
+        history.push(path);
+    };
 
     return (
         <IonHeader className={`header-home ${headerClass}`}>
-        <ion-grid>
+            <ion-grid>
                 <ion-row>
                     <ion-col></ion-col>
                     <ion-col class="logo">
@@ -21,32 +26,21 @@ const Header = ({ headerClass = "", color = "white" }) => {
             </ion-grid>
 
             <IonSegment scrollable={true} value="heart">
-                <IonRouterLink  routerLink="/">
-                    <IonSegmentButton value="youcare">
-                        Accueil
-                    </IonSegmentButton>
-                </IonRouterLink >
-                <IonRouterLink  routerLink="/collections">
-                    <IonSegmentButton value="youluxe">
-                        Collections
-                    </IonSegmentButton>
-                </IonRouterLink>
-                <IonRouterLink  routerLink="/posts">
-                    <IonSegmentButton value="youdiscovery">
-                        Articles
-                    </IonSegmentButton>
-                </IonRouterLink >
-
-                <IonRouterLink  routerLink="/plans">
-                    <IonSegmentButton value="youvence">
-                        Abonnements
-                    </IonSegmentButton>
-                </IonRouterLink >
-                <IonRouterLink  routerLink="/contact">
-                    <IonSegmentButton value="youvence">
-                        Contact
-                    </IonSegmentButton>
-                </IonRouterLink >
+                <IonSegmentButton onClick={() => navigateTo("/home")}>
+                    Accueil
+                </IonSegmentButton>
+                <IonSegmentButton onClick={() => navigateTo("/collections")}>
+                    Collections
+                </IonSegmentButton>
+                <IonSegmentButton onClick={() => navigateTo("/posts")}>
+                    Articles
+                </IonSegmentButton>
+                <IonSegmentButton onClick={() => navigateTo("/plans")}>
+                    Abonnements
+                </IonSegmentButton>
+                <IonSegmentButton onClick={() => navigateTo("/contact")}>
+                    Contact
+                </IonSegmentButton>
             </IonSegment>
         </IonHeader>
     );

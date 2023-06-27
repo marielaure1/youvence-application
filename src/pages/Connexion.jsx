@@ -33,18 +33,18 @@ const Connexion = () => {
         
         try{
             const response = await api.login(identifiants)
-            let data = response.data
+           
 
-            if(data.errors){
+            if(response?.data?.errors){
                 setIdentifiantsErrors((prev) => ({
                     ...prev,
-                    email: data.errors.emailError ? data.errors.emailError : "Entrez votre email",
-                    password: data.errors.passwordError ? data.errors.passwordError : "Entrez votre mot de passe"
+                    email: response?.data?.errors.emailError ? response?.data?.errors.emailError : "Entrez votre email",
+                    password: response?.data?.errors.passwordError ? response?.data?.errors.passwordError : "Entrez votre mot de passe"
                 }))
-            } else if(data.message){
-                setMessage(data.message)
-            } else if(data.token){
-                dispatch(loginSuccess(data.token))
+            } else if(response?.data?.message){
+                setMessage(response?.data?.message)
+            } else if(response?.data?.token){
+                dispatch(loginSuccess(response?.data?.token))
                 history.push('/')
             }
   

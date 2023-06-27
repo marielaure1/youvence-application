@@ -1,12 +1,13 @@
 import { IonButtons, IonButton, IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle } from '@ionic/react';
 import { Icon } from '@iconify/react';
-
+import { useHistory } from 'react-router-dom';
 import { collectionBanner, collectionBanner3, addCart } from "@/assets"
 
 const Collection = () => {
-    
+    const history = useHistory();
+
     const handleGoBack = () => {
-        window.history.back();
+        history.push("/collections");
     };
 
   return (

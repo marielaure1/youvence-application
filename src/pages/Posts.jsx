@@ -1,160 +1,76 @@
-import { IonButtons, IonButton, IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle } from '@ionic/react';
+import { IonButtons, IonButton, IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonItem, IonRouterLink, IonCol, IonRow, IonGrid, IonImg } from '@ionic/react';
 import { Icon } from '@iconify/react';
-import { Link , useHistory } from 'react-router-dom';
-import { collectionBanner, addCart } from "@/assets"
+import { useHistory } from 'react-router-dom';
+import Header from '@/src/components/layout/Header';
+import { collectionBanner, collectionBanner2,  addCart } from "@/assets"
+import React, {useEffect, useState} from 'react';
+import api from '@/src/api/api'
 
-const Collection = () => {
-
-    const handleGoBack = () => {
-        window.history.back();
+const Posts = () => {
+    const history = useHistory();
+    const [allPosts, setAllPosts] = useState(null);
+    const handleGoBack = url => {
+        history.push(url);
     };
 
+    const getAllPostsFetch = async () => {
+            
+        try{
+            const response = await api.getPosts();
+
+            // setAllPosts(response);
+            console.log(response);
+
+            if(response?.data?.allPosts){
+                setAllPosts(response?.data?.allPosts)
+            }
+        } catch(error){
+            console.log(error);
+        }
+    } 
+
+     // Init
+     useEffect( () => {
+    
+        getAllPostsFetch()
+        
+    }, []);
+
   return (
-    <IonPage>
-        <IonHeader className='header-collection' slot="fixed">
-            <IonToolbar>
-               <div className="content">
-                    <IonButton onClick={handleGoBack}>
-                        <Icon icon="ph:arrow-circle-left-thin" />
-                    </IonButton>
-                    <IonTitle>Nos articles</IonTitle>
-                    <div className="icones">
-                        {/* <Icon icon="ph:heart-light" />
-                                <Icon icon="ph:shopping-cart-simple-light" /> */}
-                    </div>
-               </div>
-            </IonToolbar>
-        </IonHeader>
-        <IonContent fullscreen>
-            <section className="list list-products">
-            <ion-grid>
-                <ion-row>
-                    <ion-col size="6" size-md="4" size-lg="2">
-                        <IonCard class='card-product'>
-                            <Link  to="/posts/loreal">
-                                <div className="top">
-                                    <div className="img-wrapper">
-                                        <img src={collectionBanner} alt="Youvence" />
-                                    </div>
-                                </div>
+       
+    <IonContent fullscreen>
+    <Header/>
+        
 
-                                <ion-card-header>
-                                    <IonCardTitle>Une routine parfaite pour des cheveux en bonne santé</IonCardTitle>
-                                    <IonCardSubtitle>Lorem ipsum dolor sit amet consectetur. Magna lacus vivamus...</IonCardSubtitle>
-                                    <Link  to="/posts/loreal"  class="btn btn-primary">
-                                        Découvrir l'article
-                                    </Link >
-                                </ion-card-header>
-                            </Link >
+        <section className="banner banner-collection">
+            <IonImg src={collectionBanner2} alt="Youvence" />
+        </section>
+        <section className="list list-products">
+        <IonGrid>
+            <IonRow>
+            {allPosts?.map( post => (
+                <IonCol size="6" size-md="4" size-lg="2" key={post.id}>
+                    <IonCard class='card-product card-article'  onClick={() => {handleGoBack(`/posts/${post?.slug}`)}}>
 
-                        </IonCard>
-                    </ion-col>
-                    <ion-col size="6" size-md="4" size-lg="2">
-                        <IonCard class='card-product'>
-                            <Link  to="/posts/loreal">
-                                <div className="top">
-                                    <div className="img-wrapper">
-                                        <img src={collectionBanner} alt="Youvence" />
-                                    </div>
-                                </div>
+                        <IonCardContent style={{aspectRatio: "3/2"}}>
+                            <img src={post?.image} alt="Youvence"/>
+                        </IonCardContent>
 
-                                <ion-card-header>
-                                    <IonCardTitle>Une routine parfaite pour des cheveux en bonne santé</IonCardTitle>
-                                    <IonCardSubtitle>Lorem ipsum dolor sit amet consectetur. Magna lacus vivamus...</IonCardSubtitle>
-                                    <Link  to="/posts/loreal"  class="btn btn-primary">
-                                        Découvrir l'article
-                                    </Link >
-                                </ion-card-header>
-                            </Link >
-
-                        </IonCard>
-                    </ion-col>
-                    <ion-col size="6" size-md="4" size-lg="2">
-                        <IonCard class='card-product'>
-                            <Link  to="/posts/loreal">
-                                <div className="top">
-                                    <div className="img-wrapper">
-                                        <img src={collectionBanner} alt="Youvence" />
-                                    </div>
-                                </div>
-
-                                <ion-card-header>
-                                    <IonCardTitle>Une routine parfaite pour des cheveux en bonne santé</IonCardTitle>
-                                    <IonCardSubtitle>Lorem ipsum dolor sit amet consectetur. Magna lacus vivamus...</IonCardSubtitle>
-                                    <Link  to="/posts/loreal"  class="btn btn-primary">
-                                        Découvrir l'article
-                                    </Link >
-                                </ion-card-header>
-                            </Link >
-
-                        </IonCard>
-                    </ion-col>
-                    <ion-col size="6" size-md="4" size-lg="2">
-                        <IonCard class='card-product'>
-                            <Link  to="/posts/loreal">
-                                <div className="top">
-                                    <div className="img-wrapper">
-                                        <img src={collectionBanner} alt="Youvence" />
-                                    </div>
-                                </div>
-
-                                <ion-card-header>
-                                    <IonCardTitle>Une routine parfaite pour des cheveux en bonne santé</IonCardTitle>
-                                    <IonCardSubtitle>Lorem ipsum dolor sit amet consectetur. Magna lacus vivamus...</IonCardSubtitle>
-                                    <Link  to="/posts/loreal"  class="btn btn-primary">
-                                        Découvrir l'article
-                                    </ Link>
-                                </ion-card-header>
-                            </Link >
-
-                        </IonCard>
-                    </ion-col>
-                    <ion-col size="6" size-md="4" size-lg="2">
-                        <IonCard class='card-product'>
-                            <Link  to="/posts/loreal">
-                                <div className="top">
-                                    <div className="img-wrapper">
-                                        <img src={collectionBanner} alt="Youvence" />
-                                    </div>
-                                </div>
-
-                                <ion-card-header>
-                                    <IonCardTitle>Une routine parfaite pour des cheveux en bonne santé</IonCardTitle>
-                                    <IonCardSubtitle>Lorem ipsum dolor sit amet consectetur. Magna lacus vivamus...</IonCardSubtitle>
-                                    <Link  to="/posts/loreal"  class="btn btn-primary">
-                                        Découvrir l'article
-                                    </ Link>
-                                </ion-card-header>
-                            </Link >
-
-                        </IonCard>
-                    </ion-col>
-                    <ion-col size="6" size-md="4" size-lg="2">
-                        <IonCard class='card-product'>
-                            <Link  to="/posts/loreal">
-                                <div className="top">
-                                    <div className="img-wrapper">
-                                        <img src={collectionBanner} alt="Youvence" />
-                                    </div>
-                                </div>
-
-                                <ion-card-header>
-                                    <IonCardTitle>Une routine parfaite pour des cheveux en bonne santé</IonCardTitle>
-                                    <IonCardSubtitle>Lorem ipsum dolor sit amet consectetur. Magna lacus vivamus...</IonCardSubtitle>
-                                    <Link  to="/posts/loreal"  class="btn btn-primary">
-                                        Découvrir l'article
-                                    </ Link>
-                                </ion-card-header>
-                            </Link >
-
-                        </IonCard>
-                    </ion-col>
-                </ion-row>
-            </ion-grid>
-            </section>
-        </IonContent>
-    </IonPage>
+                        <IonCardHeader>
+                            <IonCardTitle>{post?.title}</IonCardTitle>
+                            <IonCardSubtitle>{post?.description}</IonCardSubtitle>
+                            <IonButton type="button" class="btn btn-primary">
+                                Découvrir l'article
+                            </IonButton>
+                        </IonCardHeader>
+                    </IonCard>
+                </IonCol>
+            ))}
+            </IonRow>
+        </IonGrid>
+        </section>
+    </IonContent>
   );
 };
 
-export default Collection;
+export default Posts;
