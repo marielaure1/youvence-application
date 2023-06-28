@@ -2,13 +2,41 @@ import { IonButtons, IonButton, IonContent, IonHeader, IonPage, IonTitle, IonToo
 import { Icon } from '@iconify/react';
 import { useHistory } from 'react-router-dom';
 import { collectionBanner, collectionBanner3, addCart } from "@/assets"
+import React, {useEffect, useState} from 'react';
+import api from '@/src/api/api'
+import { useParams } from 'react-router-dom';
 
 const Collection = () => {
     const history = useHistory();
+    const [getCollection, setCollection] = useState(null);
+    const { slug } = useParams();
 
-    const handleGoBack = () => {
-        history.push("/collections");
+    const handleGoBack = url => {
+        history.push(url);
+        console.log(url);
     };
+
+    const getCollectionFetch = async () => {
+            
+        try{
+            const response = await api.getOneCollection(slug);
+
+            console.log(response);
+
+            if(response?.data?.showCollection){
+                setCollection(response?.data?.showCollection)
+            }
+        } catch(error){
+            console.log(error);
+        }
+    } 
+
+     // Init
+     useEffect( () => {
+    
+        getCollectionFetch()
+        
+    }, []);
 
   return (
     <IonPage>
@@ -18,159 +46,47 @@ const Collection = () => {
                     <IonButton onClick={handleGoBack}>
                        <Icon icon="ph:arrow-circle-left-thin" />
                     </IonButton>
-                    <IonTitle>Nom de la collection</IonTitle>
+                    <IonTitle>{getCollection?.title}</IonTitle>
                     <div className="icones">
-                        {/* <Icon icon="ph:heart-light" />
-                                <Icon icon="ph:shopping-cart-simple-light" /> */}
                     </div>
                </div>
             </IonToolbar>
         </IonHeader>
         <IonContent fullscreen>
             <section className="banner banner-collection">
-                <img src={collectionBanner3} alt="Youvence" />
+                <img src={getCollection?.image} alt="Youvence" />
             </section>
             <section className="list list-products">
             <ion-grid>
                 <ion-row>
-                    <ion-col size="6" size-md="4" size-lg="2">
+                    {getCollection?.products?.map(product => {
+                    if(product.published == true){
+                       return (
+                        <ion-col size="6" size-md="4" size-lg="2" key={product.id}>
                         <IonCard class='card-product'>
-                            <ion-router-link href="/products/loreal">
-                                <div className="top">
+                                <div className="top"   onClick={() => {handleGoBack(`/products/${product.slug}`)}}>
                                     <div className="img-wrapper">
-                                        <img src={collectionBanner} alt="Youvence" />
+                                        <img src={product.images[0]} alt="Youvence" />
                                     </div>
                                 </div>
 
-                                <ion-card-header>
-                                    <IonCardTitle>Box YouCare - Routine cheveux sec</IonCardTitle>
-                                    <IonCardSubtitle>Shampoing, Après shampoing, Masque hydratant...</IonCardSubtitle>
+                                <IonCardHeader>
+                                    <IonCardTitle   onClick={() => {handleGoBack(`/products/${product?.slug}`)}}>Box YouCare - Routine cheveux sec</IonCardTitle>
+                                    <IonCardSubtitle   onClick={() => {handleGoBack(`/products/${product?.slug}`)}}>Shampoing, Après shampoing, Masque hydratant...</IonCardSubtitle>
                                     <div className="content">
-                                        <p className='price'>50 € <span>70 €</span></p>
-                                        <IonButton  id="present-alert">
-                                            <img src={addCart} alt="" />
+                                        {/* <p className='price'>50 € <span>70 €</span></p> */}
+                                        <IonButton  class="btn-commander">
+                                            Commander ce produit
                                         </IonButton>
                                     </div>
-                                </ion-card-header>
-                            </ion-router-link>
+                                </IonCardHeader>
 
                         </IonCard>
                     </ion-col>
-                    <ion-col size="6" size-md="4" size-lg="2">
-                        <IonCard class='card-product'>
-                            <ion-router-link href="/products/loreal">
-                                <div className="top">
-                                    <div className="img-wrapper">
-                                        <img src={collectionBanner} alt="Youvence" />
-                                    </div>
-                                </div>
-
-                                <ion-card-header>
-                                    <IonCardTitle>Box YouCare - Routine cheveux sec</IonCardTitle>
-                                    <IonCardSubtitle>Shampoing, Après shampoing, Masque hydratant...</IonCardSubtitle>
-                                    <div className="content">
-                                        <p className='price'>50 € <span>70 €</span></p>
-                                        <IonButton>
-                                            <img src={addCart} alt="" />
-                                        </IonButton>
-                                    </div>
-                                </ion-card-header>
-                            </ion-router-link>
-
-                        </IonCard>
-                    </ion-col>
-                    <ion-col size="6" size-md="4" size-lg="2">
-                        <IonCard class='card-product'>
-                            <ion-router-link href="/products/loreal">
-                                <div className="top">
-                                    <div className="img-wrapper">
-                                        <img src={collectionBanner} alt="Youvence" />
-                                    </div>
-                                </div>
-
-                                <ion-card-header>
-                                    <IonCardTitle>Box YouCare - Routine cheveux sec</IonCardTitle>
-                                    <IonCardSubtitle>Shampoing, Après shampoing, Masque hydratant...</IonCardSubtitle>
-                                    <div className="content">
-                                        <p className='price'>50 € <span>70 €</span></p>
-                                        <IonButton>
-                                            <img src={addCart} alt="" />
-                                        </IonButton>
-                                    </div>
-                                </ion-card-header>
-                            </ion-router-link>
-
-                        </IonCard>
-                    </ion-col>
-                    <ion-col size="6" size-md="4" size-lg="2">
-                        <IonCard class='card-product'>
-                            <ion-router-link href="/products/loreal">
-                                <div className="top">
-                                    <div className="img-wrapper">
-                                        <img src={collectionBanner} alt="Youvence" />
-                                    </div>
-                                </div>
-
-                                <ion-card-header>
-                                    <IonCardTitle>Box YouCare - Routine cheveux sec</IonCardTitle>
-                                    <IonCardSubtitle>Shampoing, Après shampoing, Masque hydratant...</IonCardSubtitle>
-                                    <div className="content">
-                                        <p className='price'>50 € <span>70 €</span></p>
-                                        <IonButton>
-                                            <img src={addCart} alt="" />
-                                        </IonButton>
-                                    </div>
-                                </ion-card-header>
-                            </ion-router-link>
-
-                        </IonCard>
-                    </ion-col>
-                    <ion-col size="6" size-md="4" size-lg="2">
-                        <IonCard class='card-product'>
-                            <ion-router-link href="/products/loreal">
-                                <div className="top">
-                                    <div className="img-wrapper">
-                                        <img src={collectionBanner} alt="Youvence" />
-                                    </div>
-                                </div>
-
-                                <ion-card-header>
-                                    <IonCardTitle>Box YouCare - Routine cheveux sec</IonCardTitle>
-                                    <IonCardSubtitle>Shampoing, Après shampoing, Masque hydratant...</IonCardSubtitle>
-                                    <div className="content">
-                                        <p className='price'>50 € <span>70 €</span></p>
-                                        <IonButton>
-                                            <img src={addCart} alt="" />
-                                        </IonButton>
-                                    </div>
-                                </ion-card-header>
-                            </ion-router-link>
-
-                        </IonCard>
-                    </ion-col>
-                    <ion-col size="6" size-md="4" size-lg="2">
-                        <IonCard class='card-product'>
-                            <ion-router-link href="/products/loreal">
-                                <div className="top">
-                                    <div className="img-wrapper">
-                                        <img src={collectionBanner} alt="Youvence" />
-                                    </div>
-                                </div>
-
-                                <ion-card-header>
-                                    <IonCardTitle>Box YouCare - Routine cheveux sec</IonCardTitle>
-                                    <IonCardSubtitle>Shampoing, Après shampoing, Masque hydratant...</IonCardSubtitle>
-                                    <div className="content">
-                                        <p className='price'>50 € <span>70 €</span></p>
-                                        <IonButton>
-                                            <img src={addCart} alt="" />
-                                        </IonButton>
-                                    </div>
-                                </ion-card-header>
-                            </ion-router-link>
-
-                        </IonCard>
-                    </ion-col>
+                       )
+                    }
+                })}
+                   
                 </ion-row>
             </ion-grid>
             </section>

@@ -66,7 +66,7 @@ const App = () => (
           <ProtectedRoute path="/contact" component={Contact} />
           <ProtectedRoute path="/collections" component={Collections} />
           <ProtectedRoute path="/collections/:slug" component={Collection} />
-          <ProtectedRoute path="/products" component={Products} />
+          {/* <ProtectedRoute path="/products" component={Products} /> */}
           <ProtectedRoute path="/products/:slug" component={Product} />
           <ProtectedRoute path="/posts" component={Posts} />
           <ProtectedRoute path="/posts/:slug" component={Post} />
@@ -81,7 +81,7 @@ const App = () => (
           <Route exact path="/inscription">
             <Inscription/>
           </Route>
-          {/* <Redirect from="/" to="/home" />: */}
+          {/* <Redirect from="/" to="/home" /> */}
           {/* <Redirect to="/404" /> */}
         </IonRouterOutlet>
 

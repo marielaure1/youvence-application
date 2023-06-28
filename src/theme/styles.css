@@ -158,11 +158,22 @@ a {
   color: purple;
 }
 
+.btn-fixed {
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 50px;
+  margin: 0;
+  --background: rgba(255, 52, 52, 0.534)!important;
+  --color: white!important;
+}
+
 .header-home {
   position: absolute;
   top: 0;
   left: 0;
   --ion-background-color: transparent;
+  box-shadow: none;
 }
 .header-home img {
   width: 70px;
@@ -254,9 +265,17 @@ a {
 .card-collection ion-grid {
   background: rgba(255, 255, 255, 0.749);
 }
-.card-collection ion-grid ion-row ion-col h3 {
-  font-size: 12px;
+.card-collection ion-grid ion-row {
+  padding: 0px;
+}
+.card-collection ion-grid ion-row h3 {
+  font-size: 18px !important;
+  padding: 5px 10px;
+  font-weight: bold;
+}
+.card-collection ion-grid ion-row p {
   margin: 0;
+  padding: 5px 10px 10px 10px;
 }
 .card-collection .title-collection h3, .card-collection .title-collection p, .card-collection .time-collection h3, .card-collection .time-collection p {
   font-size: 14px;
@@ -394,13 +413,14 @@ a {
   background: transparent;
 }
 .card-product ion-card-header ion-card-title {
-  font-size: 12px;
+  font-size: 16px;
   font-family: var(--ft-primary);
   font-weight: 600;
 }
 .card-product ion-card-header ion-card-subtitle {
-  font-size: 10px;
+  font-size: 12px;
   color: var(--cl-black);
+  margin-bottom: 10px;
 }
 
 .list-products {
@@ -410,14 +430,20 @@ a {
 .card-collection ion-item {
   width: 100%;
   height: 100%;
+  padding: 20px;
 }
 .card-collection ion-item img {
   width: 100%;
   height: 100%;
 }
-.card-collection ion-item ion-grid {
-  width: 100%;
-  height: 100%;
+.card-collection ion-item h3 {
+  font-size: 18px !important;
+  padding: 5px 10px;
+  font-weight: bold;
+}
+.card-collection ion-item p {
+  margin: 0;
+  padding: 5px 10px 10px 10px;
 }
 
 .gallerie {
@@ -459,6 +485,23 @@ ion-accordion > div {
 .banner-product swiper-slide img {
   height: 100%;
   width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.btn-commander {
+  font-size: 12px;
+  background-color: var(--cl-brown1) !important;
+  color: var(--cl-white) !important;
+}
+
+.ratio-banner {
+  aspect-ratio: 3/4 !important;
+  height: 100% !important;
+}
+.ratio-banner img {
+  width: 100%;
+  height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
 }

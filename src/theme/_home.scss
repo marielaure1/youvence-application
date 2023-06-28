@@ -3,6 +3,7 @@
     top: 0;
     left: 0;
     --ion-background-color: transparent;
+    box-shadow: none;
 
     img{
         width: 70px;
@@ -107,11 +108,18 @@
         background: rgba(255, 255, 255, 0.749);
 
         ion-row{
-            ion-col{
-                h3{
-                    font-size: 12px;
-                    margin: 0;
-                }
+            padding: 0px;
+           
+            h3{ 
+                font-size: 18px!important;
+                padding: 5px 10px;
+            font-weight: bold;
+
+            }
+
+            p{
+                margin: 0;
+                padding: 5px 10px 10px 10px;
             }
         }
     }
