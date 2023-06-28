@@ -30,7 +30,7 @@ export default {
     // Subscriptions
     checkout : async (data) => subscriptions.post(`/checkout`, data, { headers: { Authorization: `Bearer ${token}`}}).then((r) => r ).catch((error) => error.response) ,
     createSubscriptionStripe : async (data) => subscriptions.post(`/create-checkout-session`, data, { headers: { Authorization: `Bearer ${token}`}}).then((r) => r ).catch((error) => error.response) ,
-    createPortalSession : async (data) => subscriptions.post(`/create-portal-session`, data, { headers: { Authorization: `Bearer ${token}`}}).then((r) => r ).catch((error) => error.response) ,
+    createPortalSession : async (data) => subscriptions.post(`checkout-success`, data, { headers: { Authorization: `Bearer ${token}`}}).then((r) => r ).catch((error) => error.response) ,
     // webHook : async (data) => subscriptions.post(`/webhook`, data, { headers: { Authorization: `Bearer ${token}`}}).then((r) => r ).catch((error) => error.response) ,
 
      // Articles

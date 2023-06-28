@@ -1,4 +1,4 @@
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonItem, IonLabel, IonSegment, IonSegmentButton, IonIcon, IonButton, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonInput, IonTextarea, IonInfiniteScroll
+import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonItem, IonLabel, IonSegment, IonSegmentButton, IonIcon, IonButton, IonCard , IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonInput, IonTextarea, IonInfiniteScroll
     ,IonInfiniteScrollContent,
     IonList, IonThumbnail } from '@ionic/react';
 import { Icon } from '@iconify/react';
@@ -291,10 +291,10 @@ const Me = () => {
                 </form>
             </section>
 
-            <section className={`commandes ${segementStatus == "commandes" ? "active" : ""}`}>
+            {/* <section className={`commandes ${segementStatus == "commandes" ? "active" : ""}`}>
 
             <IonList>
-                {items.map((item, index) => (
+                {items.map(item => (
                 <IonCard key={item}>
                         <IonCardHeader>
                             <IonCardTitle>03/05/2023</IonCardTitle>
@@ -327,7 +327,7 @@ const Me = () => {
 
             <section className={`abonnements ${segementStatus == "abonnements" ? "active" : ""}`}>
                 <p>Abonnements</p>
-            </section>
+            </section> */}
 
             
         </IonContent>

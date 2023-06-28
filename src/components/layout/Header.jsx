@@ -41,6 +41,15 @@ const Header = ({ headerClass = "", color = "white" }) => {
                 <IonSegmentButton onClick={() => navigateTo("/contact")}>
                     Contact
                 </IonSegmentButton>
+                <IonSegmentButton onClick={() => navigateTo("/mentions")}>
+                    Mentions Légales
+                </IonSegmentButton>
+                <IonSegmentButton onClick={() => navigateTo("/cgv")}>
+                Conditions Générales de Vente et d’Utilisation
+                </IonSegmentButton>
+                <IonSegmentButton onClick={() => navigateTo("/politiques")}>
+                Politique de Confidentialité
+                </IonSegmentButton>
             </IonSegment>
         </IonHeader>
     );

@@ -168,6 +168,11 @@ a {
   --color: white!important;
 }
 
+.text-lorzem h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
 .header-home {
   position: absolute;
   top: 0;

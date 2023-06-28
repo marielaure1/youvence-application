@@ -48,6 +48,9 @@ import Post from '@/src/pages/Post.jsx';
 import Plans from '@/src/pages/Plans.jsx';
 import Search from '@/src/pages/Search.jsx';
 import Me from '@/src/pages/Me.jsx';
+import Politiques from '@/src/pages/Politiques.jsx';
+import CGV from '@/src/pages/CGV.jsx';
+import Mentions from '@/src/pages/Mentions.jsx';
 import Checkout from '@/src/pages/Checkout.jsx';
 import Error from '@/src/pages/Error.jsx';
 import ProtectedRoute from '@/src/components/routes/ProtectedRoute';
@@ -71,6 +74,9 @@ const App = () => (
           <ProtectedRoute path="/posts" component={Posts} />
           <ProtectedRoute path="/posts/:slug" component={Post} />
           <ProtectedRoute path="/plans" component={Plans} />
+          <ProtectedRoute path="/mentions" component={Mentions} />
+          <ProtectedRoute path="/cgv" component={CGV} />
+          <ProtectedRoute path="/politiques" component={Politiques} />
           <ProtectedRoute path="/checkout" component={Checkout} />
           <ProtectedRoute path="/404" component={Error} />
           

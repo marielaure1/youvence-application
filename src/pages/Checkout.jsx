@@ -125,34 +125,50 @@ return (
 )
 };
   
-  const SuccessDisplay = ({ sessionId }) => {
+  const SuccessDisplay = ({ sessionId, planId, userId }) => {
+    
+    const createSubscript = async () => {
+      let subscrip = {
+        planId, userId
+      }
+
+      const response = await api.createPortalSession(JSON.stringify(subscrip))
+
+      console.log(response);
+    }
+    useEffect(() => {
+      createSubscript()
+    }, [])
+    
     return (
-      <section>
-        <div className="product Box-root">
-          {/* <Logo /> */}
-          <div className="description Box-root">
-            <h3>Subscription to starter plan successful!</h3>
-          </div>
-        </div>
-        <form action="/create-portal-session" method="POST">
-          <input
-            type="hidden"
-            id="session-id"
-            name="session_id"
-            value={sessionId}
-          />
-          <button id="checkout-and-portal-button" type="submit">
-            Manage your billing information
-          </button>
-        </form>
-      </section>
+
+<IonContent>
+<Header/>
+
+<IonContent class="checkout" >
+    <IonCard class='card-checkout'>
+       <IonCardContent>
+            <p>Votre abonnemnt a été pris avec succès</p>
+        </IonCardContent>
+    </IonCard>
+</IonContent>
+</IonContent>
     );
   };
   
   const Message = ({ message }) => (
-    <section>
-      <p>{message}</p>
-    </section>
+
+<IonContent>
+<Header/>
+
+<IonContent class="checkout" >
+    <IonCard class='card-checkout'>
+       <IonCardContent>
+            <p>{message}</p>
+        </IonCardContent>
+    </IonCard>
+</IonContent>
+</IonContent>
   );
 
 const Checkout = () => {
@@ -161,11 +177,13 @@ const Checkout = () => {
   let [message, setMessage] = useState('');
   let [success, setSuccess] = useState(false);
   let [sessionId, setSessionId] = useState('');
+  let [planId, setPlanId] = useState('');
+  let [userId, setUserId] = useState('');
 
   const getWebHook = async () => {
-    const response = await api.webHook({})
+    // const response = await api.webHook({})
 
-    console.log(response);
+    // console.log(response);
   }
   useEffect(() => {
     // Check to see if this is a redirect back from Checkout
@@ -175,13 +193,15 @@ const Checkout = () => {
       setSuccess(true);
 
       getWebHook()
-      // setSessionId(query.get('session_id'));
+      setSessionId(query.get('session_id'));
+      setPlanId(query.get('plan_id'));
+      setUserId(query.get('user_id'));
     }
 
     if (query.get('canceled')) {
       setSuccess(false);
       setMessage(
-        "Order canceled -- continue to shop around and checkout when you're ready."
+        "Paiement annulé."
       );
     }
   }, [sessionId]);
@@ -189,7 +209,7 @@ const Checkout = () => {
   if (!success && message === '') {
     return <ProductDisplay />;
   } else if (success && sessionId !== '') {
-    return <SuccessDisplay sessionId={sessionId} />;
+    return <SuccessDisplay sessionId={sessionId} planId={planId}  userId={userId}/>;
   } else {
     return <Message message={message} />;
   }
