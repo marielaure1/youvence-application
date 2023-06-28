@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const token = localStorage.getItem("token")
 
-const URL = "http://localhost:3001/api"
+const URL = import.meta.env.VITE_API_URL + "/api"
 
 axios.defaults.headers.common["Content-Type"] = "multipart/form-data";
 axios.defaults.headers.common["Accept"] = "application/json";
@@ -20,7 +20,7 @@ export default {
     register : async (data) => auth.post("/register", data).then((r) => { return r}).catch((error) => error.response) ,
     me : async () => auth.get(`/me`, { headers: { Authorization: `Bearer ${token}`}}).then((r) => r ).catch((error) => error.response) ,
     meUpdate : async (data, id) => auth.post(`/me-update/${id}`, data, { headers: { Authorization: `Bearer ${token}`}}).then((r) => r ).catch((error) => error.response) ,
-
+    sendEmailContact : async (data) => auth.post("/send-email/contact", data).then((r) => { console.log(r); return r; }).catch((error) => { console.log(error); return error.response;}) ,
     updatePassword: async (data, id) => users.put(`/${id}/password`, data, { headers: { Authorization: `Bearer ${token}`}}).then((r) => r ).catch((error) => error.response) ,
     
     // Plans
@@ -44,4 +44,7 @@ export default {
       // Products
       getProducts : async () => products.get(`/client`, { headers: { Authorization: `Bearer ${token}`}}).then((r) => r ).catch((error) => error.response) ,
       getOneProduct : async (slug) => products.get(`/client/${slug}`, { headers: { Authorization: `Bearer ${token}`}}).then((r) => r ).catch((error) => error.response) ,
+
+      
 } 
+

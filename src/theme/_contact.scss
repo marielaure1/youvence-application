@@ -37,6 +37,14 @@
     ion-input{
         margin-bottom: 20px;
     }
+
+    .message{
+        font-size: 24px !important;
+        color: #07720c;
+        text-align: center;
+        font-weight: 600;
+        margin: 30px 0;
+    }
 }
 
 .btn-envoyer{
@@ -65,3 +73,12 @@
         font-size: 14px;
     }
 }
+
+.form-contact {
+    display: none;
+}
+
+.form-contact.show{
+    display: block;
+}
+

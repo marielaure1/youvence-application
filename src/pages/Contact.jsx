@@ -6,11 +6,15 @@ import React, {useEffect, useState} from 'react';
 import { IonInput, IonTextarea  } from '@ionic/react';
 import Header from '@/src/components/layout/Header';
 import GoogleMap from '@/src/components/google/Maps';
-
+import api from '@/src/api/api'
 
 const Contact = () => {
     const [isTouched, setIsTouched] = useState(false);
     const [isValid, setIsValid] = useState();
+    const [getData, setData] = useState();
+    const [getDataError, setDataError] = useState();
+    const [formActive, setFormActive] = useState(true);
+    const [getMessage, setMessage] = useState(true);
   
     const validateEmail = (email) => {
       return email.match(
@@ -31,22 +35,63 @@ const Contact = () => {
     const markTouched = () => {
       setIsTouched(true);
     };
-  
+
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+
+        const response = await api.sendEmailContact(getData)
+
+        console.log(response);
+
+        if(response?.data?.errors){
+            setDataError(response?.data?.errors)
+        }
+
+        if(response?.data?.error){
+            setMessage(response?.data?.error)
+        }
+
+        if(response?.data?.success){
+            setMessage(response?.data?.success)
+            setFormActive(false)
+        }
+    }
+
+    const handleChange = (e) => {
+        const {id, value} = e.target
+
+        setData(prev => ({
+            ...prev,
+            nom: id == "nom" ? value : prev?.nom,
+            prenom: id == "prenom" ? value : prev?.prenom,
+            phone: id == "phone" ? value : prev?.phone,
+            sujet: id == "sujet" ? value : prev?.sujet,
+            message: id == "message" ? value : prev?.message,
+        }))
+    }
+
+    useEffect(() => {
+      
+    console.log(getData);
+    }, [getData])
+    
     return (
         <IonContent>
             <Header headerClass="header-contact header-static" color="black"/>
-        
-            <BackgroundAnimation />
 
             <section className="contact">
-                <form action="">
+
+                {getMessage && <p className='message'>{getMessage}</p>}
+                <form onSubmit={handleSubmit} className={`form-contact ${formActive == true ? 'show' : ""}`}>
                     <IonInput
                         className={`${isValid && 'ion-valid'} ${isValid === false && 'ion-invalid'} ${isTouched && 'ion-touched'}`}
                         type="text"
                         fill="solid"
                         label="Nom*"
                         labelPlacement="floating"
-                        helperText="Entrez votre nom">
+                        id="nom"
+                        helperText={getDataError?.nomError}
+                        onIonInput={handleChange}>
                     </IonInput>
                     <IonInput
                         className={`${isValid && 'ion-valid'} ${isValid === false && 'ion-invalid'} ${isTouched && 'ion-touched'}`}
@@ -54,35 +99,40 @@ const Contact = () => {
                         fill="solid"
                         label="Prénom*"
                         labelPlacement="floating"
-                        helperText="Entrez votre prénom">
+                        id="prenom"
+                        helperText={getDataError?.prenomError}
+                        onIonInput={handleChange}>
+                    </IonInput>
+                    <IonInput
+                        className={`${isValid && 'ion-valid'} ${isValid === false && 'ion-invalid'} ${isTouched && 'ion-touched'}`}
+                        type="tel"
+                        fill="solid"
+                        label="Téléphone"
+                        labelPlacement="floating"
+                        id="phone"
+                        helperText={getDataError?.phoneError}
+                        onIonInput={handleChange}>
                     </IonInput>
                     <IonInput
                         className={`${isValid && 'ion-valid'} ${isValid === false && 'ion-invalid'} ${isTouched && 'ion-touched'}`}
                         type="text"
                         fill="solid"
-                        label="Téléphone"
+                        label="Sujet*"
+                        id="sujet"
                         labelPlacement="floating"
-                        helperText="Entrez votre numéro de téléphone">
-                    </IonInput>
-                    <IonInput
-                        className={`${isValid && 'ion-valid'} ${isValid === false && 'ion-invalid'} ${isTouched && 'ion-touched'}`}
-                        type="email"
-                        fill="solid"
-                        label="Sujet"
-                        labelPlacement="floating"
-                        helperText="Entrez le sujet de votre message"
-                        errorText="Email non valide"
-                        onIonInput={(event) => validate(event)}
-                        onIonBlur={() => markTouched()}>
+                        helperText={getDataError?.sujetError}
+                        onIonInput={handleChange}>
                     </IonInput>
                     <IonTextarea
                         fill="solid"
                         label="Message"
+                        id="message"
                         labelPlacement="floating"
-                        helperText="Entrez votre message">
+                        helperText={getDataError?.messageError}
+                        onIonInput={handleChange}>
                     </IonTextarea>
 
-                    <IonButton class="btn-envoyer">
+                    <IonButton type="submit" class="btn-envoyer">
                         Envoyer
                     </IonButton>
                 </form>
