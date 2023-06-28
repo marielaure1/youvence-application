@@ -5,7 +5,6 @@ import BackgroundAnimation from '@/src/animations/BackgroundAnimation';
 import React, {useEffect, useState} from 'react';
 import { IonInput, IonTextarea  } from '@ionic/react';
 import Header from '@/src/components/layout/Header';
-import GoogleMap from '@/src/components/google/Maps';
 import api from '@/src/api/api'
 
 const Contact = () => {
